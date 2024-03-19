@@ -1,0 +1,126 @@
+import {
+  Title,
+  Description,
+  Canvas,
+  Controls,
+  Meta,
+  Stories,
+} from "@storybook/blocks"
+import * as TableStories from "./table.stories"
+
+<Meta of={TableStories} />
+
+<Title of={TableStories} />
+
+<Description of={TableStories} />
+
+<Canvas of={TableStories.Default} />
+
+<Controls of={TableStories.Default} />
+
+<Canvas of={TableStories.NoData} />
+
+<Controls of={TableStories.NoData} />
+
+## Usage
+
+```jsx
+const columns: TableProps["columns"] = [
+  {
+    title: "Name Nasabah",
+    dataIndex: "name",
+    key: "name",
+    width: 160,
+  },
+  {
+    title: "Nama Fund",
+    dataIndex: "fundName",
+    key: "fundName",
+    width: 180,
+  },
+  {
+    title: "Gross Transaction Amount",
+    dataIndex: "grossTransactionAmount",
+    key: "grossTransactionAmount",
+    width: 200,
+    sorter: true,
+  },
+  {
+    title: "Number of Unit",
+    dataIndex: "unit",
+    key: "unit",
+    width: 120,
+  },
+  {
+    title: "NAV per Unit",
+    dataIndex: "nav",
+    key: "nav",
+    width: 130,
+  },
+  {
+    title: "Transaction Date",
+    dataIndex: "transactionDate",
+    key: "transactionDate",
+    width: 120,
+  },
+  {
+    title: "Transaction Type",
+    dataIndex: "type",
+    key: "type",
+    width: 120,
+  },
+]
+
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    fundName: "Sucorinvest Sharia Balanced Fund Plus",
+    grossTransactionAmount: 100000000000,
+    unit: "100000",
+    nav: 100000,
+    transactionDate: "15 Oktober 2024",
+    type: "Redemption",
+  },
+  {
+    key: "2",
+    name: "John Brown",
+    fundName: "Sucorinvest Sharia Balanced Fund Plus",
+    grossTransactionAmount: 100000000000,
+    unit: "100000",
+    nav: 100000,
+    transactionDate: "15 Oktober 2024",
+    type: "Redemption",
+  },
+  {
+    key: "3",
+    name: "John Brown",
+    fundName: "Sucorinvest Sharia Balanced Fund Plus",
+    grossTransactionAmount: 100000000000,
+    unit: "100000",
+    nav: 100000,
+    transactionDate: "15 Oktober 2024",
+    type: "Redemption",
+  },
+]
+
+<Table
+  loading={isLoading}
+  clickable={isClickable}
+  layout="fixed"
+  empty={<Empty />}
+  columns={columns}
+  dataSource={dataSource}
+  scroll={{ x: 100 }}
+  onRowClick={(record) => {
+    console.log(record, "show row value")
+  }}
+  onChange={(_0, _1, sorter) => {
+    console.log(sorter, "show sort value")
+  }}
+/>
+```
+
+## Documentation
+
+- [Ant Design - Table](https://ant.design/components/table)

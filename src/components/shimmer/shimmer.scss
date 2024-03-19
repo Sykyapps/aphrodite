@@ -1,0 +1,22 @@
+.syky-shimmer-container {
+    display: flex;
+}
+
+.syky-shimmer {
+    background: linear-gradient(90deg, rgba(152,156,172, 0.15) 25%, rgba(224,227,239, 0.20) 37%, rgba(152,156,172, 0.15) 63%);
+    background-size: 400% 100%;
+    animation-name: syky-shimmer-loading;
+    animation-duration: 2.2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    border-radius: 4px;
+}
+
+@keyframes syky-shimmer-loading {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}

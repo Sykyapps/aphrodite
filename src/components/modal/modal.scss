@@ -1,0 +1,53 @@
+.ant-modal-root {
+  .ant-modal-mask {
+    background: rgba(4, 8, 22, 0.6);
+  }
+}
+
+.syky-modal {
+  .ant-modal-content {
+    padding: 0;
+    border-radius: 16px;
+  }
+
+  .ant-modal-header {
+    padding: 16px 20px;
+    border-radius: 16px 16px 0 0;
+    margin-bottom: 0;
+  }
+
+  .ant-modal-body {
+    padding: 0 20px;
+  }
+
+  .ant-modal-footer {
+    padding: 16px 20px;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: unset;
+    border: unset;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #f5f6fa;
+    }
+  }
+
+  &-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    padding: 8px 0;
+  }
+}

@@ -1,0 +1,67 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as ModalStories from "./modal.stories"
+
+<Meta of={ModalStories} />
+
+<Title of={ModalStories} />
+
+<Description of={ModalStories} />
+
+<Canvas of={ModalStories.Default} />
+
+## Usage
+
+```jsx
+const [isOpen, setIsOpen] = useState(false)
+const [value, setValue] = useState("")
+
+const { message } = contextProvider.useApp()
+
+const handleOpenModal = () => {
+  setIsOpen(true)
+}
+
+const handleOk = () => {
+  message.info(value)
+
+  setIsOpen(false)
+  setValue("")
+}
+
+const handleClose = () => {
+  setIsOpen(false)
+}
+
+return (
+  <>
+    <Button
+      buttonVariant="secondary"
+      size="small"
+      icon={<SortFilterIcon width={16} height={16} />}
+      onClick={handleOpenModal}
+    >
+      Sort & Filter
+    </Button>
+    <Modal
+      open={isOpen}
+      disabled={value.length === 0}
+      title={title}
+      onOk={handleOk}
+      onClose={handleClose}
+      okText="Terapkan"
+    >
+      <div style={{ padding: "20px 0" }}>
+        <p>Search</p>
+        <Input
+          value={value}
+          onChange={(e: any) => setValue(e.target.value)}
+        />
+      </div>
+    </Modal>
+  </>
+)
+```
+
+## Documentation
+
+- [Ant Design - Modal](https://ant.design/components/modal)

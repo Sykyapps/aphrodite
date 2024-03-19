@@ -1,0 +1,33 @@
+import { Title, Description, Canvas, Meta, Controls } from "@storybook/blocks"
+import * as TagsStories from "./tags.stories"
+
+<Meta of={TagsStories} />
+
+<Title of={TagsStories} />
+
+<Description of={TagsStories} />
+
+<Canvas of={TagsStories.Default} />
+
+<Controls of={TagsStories.Default} />
+
+## Usage
+
+```jsx
+const tags: TagsItem[] = [
+  {
+    name: "Transaksi terlama",
+    key: "oldestTransaction",
+  },
+  {
+    name: "Transaksi terbaru",
+    key: "latestTransaction",
+  },
+]
+
+<Tags dataSource={tags} onChange={onChange} />
+```
+
+## Documentation
+
+- [Ant Design - Tag](https://ant.design/components/tag)

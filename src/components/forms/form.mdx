@@ -1,0 +1,43 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as FormStories from "./form.stories"
+
+<Meta of={FormStories} />
+
+<Title of={FormStories} />
+
+<Description of={FormStories} />
+
+<Canvas of={FormStories.Default} />
+
+## Usage
+
+```jsx
+<Form onFinish={onFinish} onChange={onChange}>
+  <FormItem
+    name="email"
+    label="Email"
+    rules={[
+      { required: true, message: "Email wajib diisi." },
+      { type: "email", message: "Format email tidak sesuai." },
+    ]}
+  >
+    <Input placeholder="Masukkan email" />
+  </FormItem>
+  <FormItem
+    name="password"
+    label="Password"
+    rules={[{ required: true, message: "Password wajib diisi." }]}
+  >
+    <InputPassword placeholder="Masukkan password" />
+  </FormItem>
+  <FormItem name="confirmPassword" label="Konfirmasi Password">
+    <InputPassword placeholder="Masukkan konfirmasi password" />
+  </FormItem>
+  <Button htmlType="submit">Submit</Button>
+</Form>
+```
+---
+
+## Documentation
+
+- [Ant Design - Form](https://ant.design/components/form)

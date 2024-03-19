@@ -1,0 +1,32 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as BreadcrumbStories from "./breadcrumb.stories"
+
+<Meta of={BreadcrumbStories} />
+
+<Title of={BreadcrumbStories} />
+
+<Description of={BreadcrumbStories} />
+
+<Canvas of={BreadcrumbStories.Default} />
+
+## Usage
+
+```jsx
+const items: BreadcrumbProps["items"] = [
+    {
+      title: <a>Transaksi</a>,
+    },
+    {
+      title: <a>Daftar Transaksi</a>,
+    },
+    {
+      title: "TRF-081-2230KlO91",
+    },
+  ]
+
+<Breadcrumb items={items} />
+```
+
+## Documentation
+
+- [Ant Design - Breadcrumb](https://ant.design/components/breadcrumb)

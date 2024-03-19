@@ -1,0 +1,53 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as BottomSheetStories from "./bottomSheet.stories"
+
+<Meta of={BottomSheetStories} />
+
+<Title of={BottomSheetStories} />
+
+<Description of={BottomSheetStories} />
+
+<Canvas of={BottomSheetStories.Default} />
+
+## Usage
+
+```jsx
+const [isOpen, setIsOpen] = useState(false)
+const [value, setValue] = useState("")
+
+const { message } = contextProvider.useApp()
+
+const handleOk = () => {
+  message.info(value)
+
+  setIsOpen(false)
+  setValue("")
+}
+
+return (
+  <>
+    <Button onClick={() => setIsOpen(true)}>Open</Button>
+    <BottomSheet
+      open={isOpen}
+      disabled={value.length === 0}
+      title={args.title}
+      onOk={handleOk}
+      okText="Terapkan"
+      onDismiss={() => setIsOpen(false)}
+      snapPoints={({ minHeight }) => minHeight}
+    >
+      <div style={{ padding: "20px 0" }}>
+        <p>Search</p>
+        <Input
+          value={value}
+          onChange={(e: any) => setValue(e.target.value)}
+        />
+      </div>
+    </BottomSheet>
+  </>
+)
+```
+
+## Documentation
+
+- [React Spring Bottom Sheet](https://react-spring.bottom-sheet.dev)

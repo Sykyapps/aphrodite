@@ -1,0 +1,41 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as TabsStories from "./tabs.stories"
+
+<Meta of={TabsStories} />
+
+<Title of={TabsStories} />
+
+<Description of={TabsStories} />
+
+<Canvas of={TabsStories.Default} />
+
+## Usage
+
+```jsx
+const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: "Overview",
+      children: (
+        <>
+          <span>Content of Overview</span>
+        </>
+      ),
+    },
+    {
+      key: "2",
+      label: "Riwayat Transaksi",
+      children: (
+        <>
+          <span>Content of Riwayat Transaksi</span>
+        </>
+      ),
+    },
+]
+
+<Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+```
+
+## Documentation
+
+- [Ant Design - Tabs](https://ant.design/components/tabs)

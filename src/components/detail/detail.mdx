@@ -1,0 +1,58 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as DetailStories from "./detail.stories"
+
+<Meta of={DetailStories} />
+
+<Title of={DetailStories} />
+
+<Description of={DetailStories} />
+
+<Canvas of={DetailStories.Default} />
+
+## Usage
+
+```jsx
+const items = [
+  {
+    title: "Nama Nasabah",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "SID",
+    dataIndex: "sid",
+    key: "sid",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
+  },
+  {
+    title: "Status KYC",
+    dataIndex: "kycStatus",
+    key: "kycStatus",
+  },
+  {
+    title: "Tanggal Referral",
+    dataIndex: "referralDate",
+    key: "referralDate",
+  },
+  {
+    title: "Tanggal Verified",
+    dataIndex: "verifiedDate",
+    key: "verifiedDate",
+  },
+]
+
+const data = {
+  name: "Jane Doe",
+  sid: "123456789012345",
+  email: "hi@sayakaya.id",
+  kycStatus: "Verified",
+  referralDate: "31 Maret 2024",
+  verifiedDate: "31 Maret 2024",
+}
+
+<Detail items={items} dataSource={data} />
+```

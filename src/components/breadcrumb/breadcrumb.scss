@@ -1,0 +1,20 @@
+.syky-breadcrumb {
+  font-size: 12px;
+
+  li,
+  .ant-breadcrumb-link a {
+    display: flex;
+    align-items: center;
+  }
+
+  a:hover {
+    background-color: unset;
+    text-decoration: underline;
+  }
+
+  .ant-breadcrumb-separator {
+    display: inline-flex;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

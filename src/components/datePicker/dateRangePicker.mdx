@@ -1,0 +1,27 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as DateRangePickerStories from "./dateRangePicker.stories"
+
+<Meta of={DateRangePickerStories} />
+
+<Title of={DateRangePickerStories} />
+
+<Description of={DateRangePickerStories} />
+
+<Canvas of={DateRangePickerStories.Default} />
+
+## Usage
+
+```jsx
+const [selectedRange, setSelectedRange] = useState<DateRange | undefined>()
+
+<DateRangePicker
+  fromMonth={new Date(2021, 9)}
+  toMonth={new Date()}
+  selected={selectedRange}
+  onSelect={setSelectedRange}
+/>
+```
+
+## Documentation
+
+- [React Day Picker](https://react-day-picker.js.org)

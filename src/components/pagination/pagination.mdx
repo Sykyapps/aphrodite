@@ -1,0 +1,30 @@
+import { Title, Description, Canvas, Controls, Meta } from "@storybook/blocks"
+import * as PaginationStories from "./pagination.stories"
+
+<Meta of={PaginationStories} />
+
+<Title of={PaginationStories} />
+
+<Description of={PaginationStories} />
+
+<Canvas of={PaginationStories.Default} />
+
+<Controls of={PaginationStories.Default} />
+
+## Usage
+
+```jsx
+const onChange = {(page: number, pageSize: number) => {
+  console.log(page, pageSize)
+}}
+
+<Pagination
+  pageSize={10}
+  total={100}
+  onChange={onChange}
+/>
+```
+
+## Documentation
+
+- [Ant Design - Pagination](https://ant.design/components/pagination)

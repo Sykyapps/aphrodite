@@ -1,0 +1,59 @@
+.syky-navMenu {
+  border-right-width: 0 !important;
+
+  .ant-menu-item,
+  .ant-menu-submenu {
+    height: unset !important;
+    padding-left: 0 !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e3ef;
+    border-radius: 0 !important;
+  }
+
+  .ant-menu-item-selected,
+  > .ant-menu .ant-menu-item-selected {
+    font-weight: 700;
+  }
+
+  .ant-menu-item .ant-menu-title-content,
+  .ant-menu-submenu .ant-menu-title-content,
+  .ant-menu-submenu .ant-menu-submenu-title {
+    height: auto;
+    line-height: normal;
+  }
+
+  .ant-menu-submenu .ant-menu-submenu-title {
+    padding-left: 0 !important;
+    background-color: unset !important;
+  }
+
+  .ant-menu-item:first-child,
+  .ant-menu-submenu:first-child {
+    padding-top: unset;
+  }
+
+  .ant-menu-item:last-child,
+  .ant-menu-submenu:last-child {
+    border-bottom: unset;
+  }
+
+  .ant-menu-item:hover,
+  .ant-menu-submenu:hover {
+    background-color: transparent !important;
+  }
+
+  .ant-menu-submenu .ant-menu-item {
+    border-bottom: unset;
+    padding-top: unset;
+    padding-bottom: 12px;
+  }
+
+  .ant-menu-submenu .ant-menu-item:first-child {
+    padding-top: 16px;
+  }
+
+  .ant-menu-submenu .ant-menu-item:last-child {
+    padding-bottom: unset;
+  }
+}

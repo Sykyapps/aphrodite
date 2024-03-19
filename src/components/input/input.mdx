@@ -1,0 +1,29 @@
+import { Title, Description, Canvas, Controls, Meta } from "@storybook/blocks"
+import * as InputStories from "./input.stories"
+
+<Meta of={InputStories} />
+
+<Title of={InputStories} />
+
+<Description of={InputStories} />
+
+<Canvas of={InputStories.Standard} />
+
+<Controls of={InputStories.Standard} />
+
+## Usage
+
+```jsx
+const [value, setValue] = useState("")
+
+<Input
+  inputVariant="standard"
+  placeholder="Cari pengguna disini"
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+/>
+```
+
+## Documentation
+
+- [Ant Design - Input](https://ant.design/components/input)

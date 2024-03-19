@@ -1,0 +1,25 @@
+.syky-tags {
+  &-wrapper {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &.ant-tag {
+    border: 1px solid #e0e3ef;
+    background: #ffffff;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px 12px;
+    margin-inline-end: unset;
+
+    &:not(.ant-tag-checkable-checked):hover {
+      color: #4d68dc;
+    }
+  }
+
+  &.ant-tag-checkable-checked {
+    background: #4d68dc;
+    border: 1px solid #4d68dc;
+  }
+}

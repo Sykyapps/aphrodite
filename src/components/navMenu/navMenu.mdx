@@ -1,0 +1,42 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as NavMenuStories from "./navMenu.stories"
+
+<Meta of={NavMenuStories} />
+
+<Title of={NavMenuStories} />
+
+<Description of={NavMenuStories} />
+
+<Canvas of={NavMenuStories.Default} />
+
+## Usage
+
+```jsx
+const items: NavMenuProps["items"] = [
+  {
+    label: "Home",
+    key: "home",
+  },
+  {
+    label: "Settings",
+    key: "settings",
+    children: [
+      {
+        label: "Account Settings",
+        key: "accountSettings",
+      },
+    ],
+  },
+  {
+    label: "About",
+    key: "about",
+    disabled: true,
+  },
+
+
+<NavMenu items={items} defaultSelectedKeys={["home"]} selectedKeys={["home"]} />
+```
+
+## Documentation
+
+- [Ant Design - Menu](https://ant.design/components/menu)

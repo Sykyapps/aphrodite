@@ -1,0 +1,42 @@
+import { Title, Description, Canvas, Controls, Meta } from "@storybook/blocks"
+import * as ButtonStories from "./button.stories"
+
+<Meta of={ButtonStories} />
+
+<Title of={ButtonStories} />
+
+<Description of={ButtonStories} />
+
+<Canvas of={ButtonStories.Primary} />
+
+<Controls of={ButtonStories.Primary} />
+
+<Canvas of={ButtonStories.Icon} />
+
+<Controls of={ButtonStories.Icon} />
+
+## Usage
+
+```jsx
+// Regular button
+<Button
+  buttonVariant="primary"
+  icon={<SearchIcon height={20} width={20} />}
+  size="middle"
+  onClick={onClick}
+>
+  Search
+</Button>
+
+// Icon button
+<Button
+  buttonVariant="icon"
+  icon={<SearchIcon height={20} width={20} />}
+  size="middle"
+  onClick={onClick}
+/>
+```
+
+## Documentation
+
+- [Ant Design - Button](https://ant.design/components/button)

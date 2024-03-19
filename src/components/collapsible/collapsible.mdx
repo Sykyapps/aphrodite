@@ -1,0 +1,20 @@
+import { Title, Description, Canvas, Controls, Meta } from "@storybook/blocks"
+import * as CollapsibleStories from "./collapsible.stories"
+
+<Meta of={CollapsibleStories} />
+
+<Title of={CollapsibleStories} />
+
+<Description of={CollapsibleStories} />
+
+<Canvas of={CollapsibleStories.Default} />
+
+<Controls of={CollapsibleStories.Default} />
+
+## Usage
+
+```jsx
+<Collapsible icon={<SearchIcon />} title="Ubah Pencarian">
+  <p>Hasil Pencarian</p>
+</Collapsible>
+```
