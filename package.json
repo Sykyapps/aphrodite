@@ -1,5 +1,6 @@
 {
-  "name": "aphrodite",
+  "name": "@sayakaya/aphrodite",
+  "private": false,
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.umd.js",
@@ -24,7 +25,8 @@
     "preview": "vite preview",
     "svgToComponents": "npx @svgr/cli --out-dir src/components/icons --ignore-existing --icon --jsx-runtime automatic --typescript --filename-case camel -- src/assets/icons",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "react": "18.2.0",
