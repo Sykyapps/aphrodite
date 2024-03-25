@@ -7,13 +7,13 @@ SayaKaya React UI Library
 To install this library, you can use npm:
 
 ```bash
-npm install aphrodite antd@5.15.1
+npm install @sayakaya/aphrodite antd@5.15.1
 ```
 
 Or, if you prefer yarn:
 
 ```bash
-yarn add aphrodite antd@5.15.1
+yarn add @sayakaya/aphrodite antd@5.15.1
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ yarn add aphrodite antd@5.15.1
 Here's a basic example of how to use this library:
 
 ```javascript
-import { Button } from 'aphrodite';
+import { Button } from '@sayakaya/aphrodite';
 
 export default () => (
   <>
