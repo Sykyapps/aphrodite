@@ -1,5 +1,5 @@
-import { useMediaQuery } from "react-responsive"
 import { Empty, Table as BaseTable, TableProps as BaseTableProps } from "antd"
+import { useMediaQuery } from "react-responsive"
 
 import Shimmer from "../shimmer/shimmer.tsx"
 
