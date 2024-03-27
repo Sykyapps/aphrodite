@@ -1,4 +1,5 @@
 export { default as ArrowDownIcon } from "./arrowDownIcon"
+export { default as ArrowLeftIcon } from "./arrowLeftIcon"
 export { default as ArrowRightIcon } from "./arrowRightIcon"
 export { default as ArrowUpIcon } from "./arrowUpIcon"
 export { default as CircleCheckIcon } from "./circleCheckIcon"

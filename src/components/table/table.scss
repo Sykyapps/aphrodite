@@ -1,10 +1,4 @@
 .syky-table {
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: block;
-  }
-
   .ant-table-thead {
     & > tr > th {
       font-weight: 700;
@@ -94,10 +88,6 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
   }
 
   &-wrapper {
