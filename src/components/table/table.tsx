@@ -39,7 +39,7 @@ const Table = ({
 
   const generateLoadingData = () => {
     const loadingData = []
-    const pageSize = 10
+    const pageSize = 3
 
     for (let i = 0; i < pageSize; i++) {
       const obj: any = {
