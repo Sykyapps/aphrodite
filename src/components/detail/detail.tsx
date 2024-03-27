@@ -17,9 +17,9 @@ type DetailProps = {
 const Detail = ({ items, dataSource }: DetailProps) => {
   return (
     <div className="syky-contained-list">
-      {items.map((item) => {
+      {items.map((item, index) => {
         return (
-          <div className="syky-contained-list-content">
+          <div key={index} className="syky-contained-list-content">
             <div className="syky-contained-list-title">
               <Paragraph bold level={1}>
                 {item.title}
