@@ -25,8 +25,7 @@
     "preview": "vite preview",
     "svgToComponents": "npx @svgr/cli --out-dir src/components/icons --ignore-existing --icon --jsx-runtime automatic --typescript --filename-case camel -- src/assets/icons",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "publish": "npm publish --access public"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "18.2.0",
