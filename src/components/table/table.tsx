@@ -34,12 +34,12 @@ const Table = ({
 }: TableProps) => {
   const isDesktop = useMediaQuery({ minWidth: 1024 })
 
-  const loadingArrayLength = 10
+  const loadingArrayLength = 3
   const loadingArray = Array.from({ length: loadingArrayLength }, (_, i) => i)
 
   const generateLoadingData = () => {
     const loadingData = []
-    const pageSize = 3
+    const pageSize = 10
 
     for (let i = 0; i < pageSize; i++) {
       const obj: any = {
