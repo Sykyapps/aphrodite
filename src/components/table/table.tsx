@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive"
 import { Empty, Table as BaseTable, TableProps as BaseTableProps } from "antd"
 
 import Shimmer from "../shimmer/shimmer.tsx"
@@ -31,18 +32,24 @@ const Table = ({
   empty,
   ...props
 }: TableProps) => {
+  const isDesktop = useMediaQuery({ minWidth: 1024 })
+
+  const loadingArrayLength = 10
+  const loadingArray = Array.from({ length: loadingArrayLength }, (_, i) => i)
+
   const generateLoadingData = () => {
     const loadingData = []
     const pageSize = 10
 
     for (let i = 0; i < pageSize; i++) {
-      const obj: any = {}
+      const obj: any = {
+        key: i,
+      }
       columns?.forEach((value: any) => {
         obj[value.dataIndex] = value.dataIndex
       })
       loadingData.push(obj)
     }
-
     return loadingData
   }
 
@@ -52,54 +59,54 @@ const Table = ({
 
   return (
     <>
-      <BaseTable
-        className={`syky-table ${loading ? "syky-table-loading" : ""} ${
-          layout === "fixed" ? "syky-table-fixed" : ""
-        }`}
-        dataSource={!loading ? dataSource : generateLoadingData()}
-        rowClassName={`${rowClassName} ${
-          clickable && !loading ? "syky-table-row-clickable" : ""
-        }`}
-        columns={undefined}
-        onRow={(record) => {
-          return {
-            onClick: () => {
-              onRowClick ? !loading && clickable && onRowClick(record) : null
-            },
-          }
-        }}
-        pagination={false}
-        showSorterTooltip={false}
-        locale={locale}
-        {...props}
-      >
-        {columns?.map((column: any) => {
-          return (
-            <>
-              {!loading ? (
-                <Column {...column} />
-              ) : (
+      {isDesktop ? (
+        <BaseTable
+          className={`syky-table ${loading ? "syky-table-loading" : ""} ${
+            layout === "fixed" ? "syky-table-fixed" : ""
+          }`}
+          dataSource={!loading ? dataSource : generateLoadingData()}
+          rowClassName={`${rowClassName} ${
+            clickable && !loading ? "syky-table-row-clickable" : ""
+          }`}
+          columns={undefined}
+          onRow={(record) => {
+            return {
+              onClick: () => {
+                onRowClick ? !loading && clickable && onRowClick(record) : null
+              },
+            }
+          }}
+          pagination={false}
+          showSorterTooltip={false}
+          locale={locale}
+          {...props}
+        >
+          {loading &&
+            columns?.map(({ key, ...column }: any) => {
+              return (
                 <Column
+                  key={key}
                   title={column.title}
                   dataIndex={column.dataIndex}
-                  key={column.key}
                   width={column.width}
                   render={() => <Shimmer />}
                 />
-              )}
-            </>
-          )
-        })}
-      </BaseTable>
-      <>
-        {dataSource && dataSource.length > 0 ? (
-          <div className="syky-table-mobile-container">
-            {!loading ? (
-              <>
-                {dataSource.map((data: any, index: number) => {
+              )
+            })}
+          {!loading &&
+            columns?.map(({ key, ...column }: any) => {
+              return <Column key={key} {...column} />
+            })}
+        </BaseTable>
+      ) : (
+        <>
+          {dataSource && dataSource.length > 0 ? (
+            <div className="syky-table-mobile-container">
+              {!loading &&
+                dataSource.map((data: any, index: number) => {
                   return (
                     <div
-                      key={Math.random() + index}
+                      key={index}
                       className={`syky-table-mobile-wrapper ${
                         clickable ? "syky-table-mobile-clickable" : ""
                       }`}
@@ -129,22 +136,20 @@ const Table = ({
                     </div>
                   )
                 })}
-              </>
-            ) : (
-              <>
-                {[1, 2, 3].map((_, index: number) => {
+              {loading &&
+                loadingArray.map((data: number) => {
                   return (
                     <div
-                      key={index}
+                      key={data}
                       className={`syky-table-mobile-wrapper ${
                         loading ? "syky-table-mobile-loading" : ""
                       }`}
                     >
                       <table className="syky-table-mobile">
                         <tbody>
-                          {columns?.map((column: any) => (
+                          {columns?.map((column: any, index: number) => (
                             <tr
-                              key={Math.random() + index}
+                              key={data + index}
                               className="syky-table-mobile-row"
                             >
                               <td className="syky-table-mobile-column-title">
@@ -160,15 +165,14 @@ const Table = ({
                     </div>
                   )
                 })}
-              </>
-            )}
-          </div>
-        ) : (
-          <div className="syky-table-mobile-empty">
-            {empty ? empty : <Empty />}
-          </div>
-        )}
-      </>
+            </div>
+          ) : (
+            <div className="syky-table-mobile-empty">
+              {empty ? empty : <Empty />}
+            </div>
+          )}
+        </>
+      )}
     </>
   )
 }
