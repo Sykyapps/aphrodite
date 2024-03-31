@@ -77,10 +77,10 @@ const ThemeProvider = ({ children }: Props) => {
             headerSplitColor: "transparent",
           },
           Tabs: {
-            inkBarColor: "#4D68DC",
-            itemActiveColor: "#4D68DC",
-            itemHoverColor: "#4D68DC",
-            itemSelectedColor: "#4D68DC",
+            inkBarColor: "#6756C1",
+            itemActiveColor: "#6756C1",
+            itemHoverColor: "#6756C1",
+            itemSelectedColor: "#6756C1",
           },
         },
       }}
