@@ -1,6 +1,7 @@
 import { Empty, Table as BaseTable, TableProps as BaseTableProps } from "antd"
 import { useMediaQuery } from "react-responsive"
 
+import { setBreakpoint } from "../../helpers/setBreakpoint.ts"
 import Shimmer from "../shimmer/shimmer.tsx"
 
 import "./table.scss"
@@ -10,8 +11,10 @@ const { Column } = BaseTable
 type TableProps = {
   clickable?: boolean
   layout?: "fixed" | "auto"
+  breakpoint?: "sm" | "md" | "lg" | "xl" | "xxl"
   onRowClick?: (value: any) => void
   loading?: boolean
+  defaultMobileLoadingLength?: number
   columns: BaseTableProps["columns"]
   dataSource: any
   rowClassName?: string
@@ -24,7 +27,9 @@ type TableProps = {
 const Table = ({
   clickable = false,
   layout = "auto",
+  breakpoint = "lg",
   loading = false,
+  defaultMobileLoadingLength = 3,
   rowClassName = "",
   columns,
   dataSource,
@@ -32,10 +37,12 @@ const Table = ({
   empty,
   ...props
 }: TableProps) => {
-  const isDesktop = useMediaQuery({ minWidth: 1024 })
+  const isDesktop = useMediaQuery({ minWidth: setBreakpoint(breakpoint) })
 
-  const loadingArrayLength = 3
-  const loadingArray = Array.from({ length: loadingArrayLength }, (_, i) => i)
+  const mobileLoadingArray = Array.from(
+    { length: defaultMobileLoadingLength },
+    (_, i) => i,
+  )
 
   const generateLoadingData = () => {
     const loadingData = []
@@ -101,75 +108,119 @@ const Table = ({
       ) : (
         <>
           {dataSource && dataSource.length > 0 ? (
-            <div className="syky-table-mobile-container">
-              {!loading &&
-                dataSource.map((data: any, index: number) => {
-                  return (
-                    <div
-                      key={index}
-                      className={`syky-table-mobile-wrapper ${
-                        clickable ? "syky-table-mobile-clickable" : ""
-                      }`}
-                      onClick={() =>
-                        onRowClick ? clickable && onRowClick(data) : null
-                      }
-                    >
-                      <table className="syky-table-mobile">
-                        <tbody>
-                          {columns?.map((column: any) => (
-                            <tr
-                              key={Math.random() + data[column.key]}
-                              className="syky-table-mobile-row"
-                            >
-                              <td className="syky-table-mobile-column-title">
-                                {column.title}
-                              </td>
-                              <td className="syky-table-mobile-column-value">
-                                {column.render
-                                  ? column.render(data[column.dataIndex])
-                                  : data[column.dataIndex]}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )
-                })}
-              {loading &&
-                loadingArray.map((data: number) => {
-                  return (
-                    <div
-                      key={data}
-                      className={`syky-table-mobile-wrapper ${
-                        loading ? "syky-table-mobile-loading" : ""
-                      }`}
-                    >
-                      <table className="syky-table-mobile">
-                        <tbody>
-                          {columns?.map((column: any, index: number) => (
-                            <tr
-                              key={data + index}
-                              className="syky-table-mobile-row"
-                            >
-                              <td className="syky-table-mobile-column-title">
-                                {column.title}
-                              </td>
-                              <td className="syky-table-mobile-column-value">
-                                <Shimmer />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )
-                })}
-            </div>
+            <>
+              <div className="syky-table-mobile-container">
+                {!loading ? (
+                  <>
+                    {dataSource.map((data: any, index: number) => {
+                      return (
+                        <div
+                          key={index}
+                          className={`syky-table-mobile-wrapper ${
+                            clickable ? "syky-table-mobile-clickable" : ""
+                          }`}
+                          onClick={() =>
+                            onRowClick ? clickable && onRowClick(data) : null
+                          }
+                        >
+                          <table className="syky-table-mobile">
+                            <tbody>
+                              {columns?.map((column: any) => (
+                                <tr
+                                  key={Math.random() + data[column.key]}
+                                  className="syky-table-mobile-row"
+                                >
+                                  <td className="syky-table-mobile-column-title">
+                                    {column.title}
+                                  </td>
+                                  <td className="syky-table-mobile-column-value">
+                                    {column.render
+                                      ? column.render(data[column.dataIndex])
+                                      : data[column.dataIndex]}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {generateLoadingData().map((data: any, index: number) => {
+                      return (
+                        <div
+                          key={index}
+                          className={`syky-table-mobile-wrapper ${
+                            loading ? "syky-table-mobile-loading" : ""
+                          }`}
+                          onClick={() => {}}
+                        >
+                          <table className="syky-table-mobile">
+                            <tbody>
+                              {columns?.map((column: any) => (
+                                <tr
+                                  key={Math.random() + data[column.key]}
+                                  className="syky-table-mobile-row"
+                                >
+                                  <td className="syky-table-mobile-column-title">
+                                    {column.title}
+                                  </td>
+                                  <td className="syky-table-mobile-column-value">
+                                    <Shimmer />
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )
+                    })}
+                  </>
+                )}
+              </div>
+              )
+            </>
           ) : (
-            <div className="syky-table-mobile-empty">
-              {empty ? empty : <Empty />}
-            </div>
+            <>
+              {loading ? (
+                <div className="syky-table-mobile-container">
+                  {mobileLoadingArray.map((data: number) => {
+                    return (
+                      <div
+                        key={data}
+                        className={`syky-table-mobile-wrapper ${
+                          loading ? "syky-table-mobile-loading" : ""
+                        }`}
+                      >
+                        <table className="syky-table-mobile">
+                          <tbody>
+                            {columns?.map((column: any, index: number) => (
+                              <tr
+                                key={data + index}
+                                className="syky-table-mobile-row"
+                              >
+                                <td className="syky-table-mobile-column-title">
+                                  {column.title}
+                                </td>
+                                <td className="syky-table-mobile-column-value">
+                                  <Shimmer />
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )
+                  })}
+                </div>
+              ) : (
+                <div className="syky-table-mobile-empty">
+                  {empty ? empty : <Empty />}
+                </div>
+              )}
+            </>
           )}
         </>
       )}

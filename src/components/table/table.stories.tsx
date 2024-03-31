@@ -134,8 +134,10 @@ export const Default: Story = {
     <div style={{ maxWidth: "925px" }}>
       <Table
         loading={args.loading}
+        defaultMobileLoadingLength={args.defaultMobileLoadingLength}
         clickable={args.clickable}
         layout={args.layout}
+        breakpoint={args.breakpoint}
         empty={args.empty}
         columns={columns}
         dataSource={data}
@@ -149,6 +151,8 @@ export const Default: Story = {
     loading: false,
     clickable: true,
     layout: "fixed",
+    defaultMobileLoadingLength: 5,
+    breakpoint: "lg",
   },
 }
 
@@ -157,8 +161,10 @@ export const NoData: Story = {
     <div style={{ maxWidth: "925px" }}>
       <Table
         loading={args.loading}
+        defaultMobileLoadingLength={args.defaultMobileLoadingLength}
         clickable={args.clickable}
         layout={args.layout}
+        breakpoint={args.breakpoint}
         empty={args.empty}
         columns={columns}
         dataSource={[]}
@@ -171,6 +177,7 @@ export const NoData: Story = {
     loading: false,
     clickable: false,
     layout: "fixed",
+    defaultMobileLoadingLength: 5,
   },
 }
 
