@@ -6,10 +6,16 @@ export type { ButtonProps } from "./button"
 export { default as Button } from "./button"
 export type { CollapsibleProps } from "./collapsible"
 export { default as Collapsible } from "./collapsible"
-export type { DatePickerProps, DateRangePickerProps } from "./datePicker"
+export type {
+  DatePickerProps,
+  DateRange,
+  DateRangePickerProps,
+} from "./datePicker"
 export { DatePicker, DateRangePicker } from "./datePicker"
 export type { DetailItem, DetailProps } from "./detail"
 export { default as Detail } from "./detail"
+export type { DialogProps } from "./dialog"
+export { default as Dialog } from "./dialog"
 export type { DrawerProps } from "./drawer"
 export { default as Drawer } from "./drawer"
 export type { EmptyProps } from "./empty"

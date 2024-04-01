@@ -6,23 +6,22 @@ import contextProvider from "../../providers/contextProvider"
 import Button from "../button"
 import { Input } from "../input"
 
-import { default as BottomSheet } from "./bottomSheet"
+import { default as Dialog } from "./dialog"
 
 const meta: Meta = {
-  title: "Overlays/BottomSheet",
-  component: BottomSheet,
+  title: "Overlays/Dialog",
+  component: Dialog,
   parameters: {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "A Bottom Sheet is a mobile UI element that slides up from the bottom to display extra content or options.",
+        component: "A Dialog combines Bottom Sheet & Modal responsively",
       },
     },
   },
-} satisfies Meta<typeof BottomSheet>
+} satisfies Meta<typeof Dialog>
 
-type Story = StoryObj<typeof BottomSheet>
+type Story = StoryObj<typeof Dialog>
 
 export const Default: Story = {
   render: (args) => {
@@ -41,14 +40,15 @@ export const Default: Story = {
     return (
       <>
         <Button onClick={() => setIsOpen(true)}>Open</Button>
-        <BottomSheet
-          open={isOpen}
-          disabled={value.length === 0}
+        <Dialog
           title={args.title}
           onOk={handleOk}
           onClose={() => setIsOpen(false)}
+          open={isOpen}
+          disabled={value.length === 0}
+          width={args.width}
+          breakpoint={args.breakpoint}
           okText={args.okText}
-          snapPoints={({ minHeight }) => minHeight * 2}
         >
           <div style={{ padding: "20px 0" }}>
             <p>Search</p>
@@ -57,12 +57,13 @@ export const Default: Story = {
               onChange={(e: any) => setValue(e.target.value)}
             />
           </div>
-        </BottomSheet>
+        </Dialog>
       </>
     )
   },
   args: {
     title: "Sort & Filter",
+    breakpoint: "lg",
     okText: "Terapkan",
   },
 }

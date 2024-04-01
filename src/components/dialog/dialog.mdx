@@ -1,13 +1,13 @@
 import { Title, Description, Canvas, Meta } from "@storybook/blocks"
-import * as BottomSheetStories from "./bottomSheet.stories"
+import * as DialogStories from "./dialog.stories"
 
-<Meta of={BottomSheetStories} />
+<Meta of={DialogStories} />
 
-<Title of={BottomSheetStories} />
+<Title of={DialogStories} />
 
-<Description of={BottomSheetStories} />
+<Description of={DialogStories} />
 
-<Canvas of={BottomSheetStories.Default} />
+<Canvas of={DialogStories.Default} />
 
 ## Usage
 
@@ -27,23 +27,21 @@ const handleOk = () => {
 return (
   <>
     <Button onClick={() => setIsOpen(true)}>Open</Button>
-    <BottomSheet
-      open={isOpen}
-      disabled={value.length === 0}
+    <Dialog
       title={args.title}
       onOk={handleOk}
       onClose={() => setIsOpen(false)}
-      okText="Terapkan"
-      snapPoints={({ minHeight }) => minHeight}
+      open={isOpen}
+      disabled={value.length === 0}
+      width={args.width}
+      breakpoint={args.breakpoint}
+      okText={args.okText}
     >
       <div style={{ padding: "20px 0" }}>
         <p>Search</p>
-        <Input
-          value={value}
-          onChange={(e: any) => setValue(e.target.value)}
-        />
+          <Input value={value} onChange={(e: any) => setValue(e.target.value)} />
       </div>
-    </BottomSheet>
+    </Dialog>
   </>
 )
 ```
