@@ -1,0 +1,17 @@
+.syky-filter-chip {
+  display: flex;
+  gap: 8px;
+
+  &-remove-button {
+    height: 8px !important;
+    width: 8px !important;
+    padding: 0 !important;
+    font-size: 1px !important;
+    color: #6756c1 !important;
+
+    &:hover {
+      color: #6756c1 !important;
+      background-color: transparent !important;
+    }
+  }
+}

@@ -4,6 +4,8 @@ export type { BreadcrumbProps } from "./breadcrumb"
 export { default as Breadcrumb } from "./breadcrumb"
 export type { ButtonProps } from "./button"
 export { default as Button } from "./button"
+export type { FilterChipProps } from "./chip"
+export { FilterChip } from "./chip"
 export type { CollapsibleProps } from "./collapsible"
 export { default as Collapsible } from "./collapsible"
 export type {
