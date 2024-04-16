@@ -60,51 +60,60 @@ const Table = ({
     return loadingData
   }
 
-  const locale = {
-    emptyText: empty ? empty : undefined,
-  }
-
   return (
     <>
       {isDesktop ? (
-        <BaseTable
-          className={`syky-table ${loading ? "syky-table-loading" : ""} ${
-            layout === "fixed" ? "syky-table-fixed" : ""
-          }`}
-          dataSource={!loading ? dataSource : generateLoadingData()}
-          rowClassName={`${rowClassName} ${
-            clickable && !loading ? "syky-table-row-clickable" : ""
-          }`}
-          columns={undefined}
-          onRow={(record) => {
-            return {
-              onClick: () => {
-                onRowClick ? !loading && clickable && onRowClick(record) : null
-              },
-            }
-          }}
-          pagination={false}
-          showSorterTooltip={false}
-          locale={locale}
-          {...props}
-        >
-          {loading &&
-            columns?.map(({ key, ...column }: any) => {
-              return (
-                <Column
-                  key={key}
-                  title={column.title}
-                  dataIndex={column.dataIndex}
-                  width={column.width}
-                  render={() => <Shimmer />}
-                />
-              )
-            })}
-          {!loading &&
-            columns?.map(({ key, ...column }: any) => {
-              return <Column key={key} {...column} />
-            })}
-        </BaseTable>
+        <>
+          <BaseTable
+            className={`syky-table ${loading ? "syky-table-loading" : ""} ${
+              layout === "fixed" ? "syky-table-fixed" : ""
+            } ${
+              !loading && dataSource && dataSource.length === 0
+                ? "syky-table-empty"
+                : ""
+            }`}
+            dataSource={!loading ? dataSource : generateLoadingData()}
+            rowClassName={`${rowClassName} ${
+              clickable && !loading ? "syky-table-row-clickable" : ""
+            }`}
+            columns={undefined}
+            onRow={(record) => {
+              return {
+                onClick: () => {
+                  onRowClick
+                    ? !loading && clickable && onRowClick(record)
+                    : null
+                },
+              }
+            }}
+            pagination={false}
+            showSorterTooltip={false}
+            locale={undefined}
+            {...props}
+          >
+            {loading &&
+              columns?.map(({ key, ...column }: any) => {
+                return (
+                  <Column
+                    key={key}
+                    title={column.title}
+                    dataIndex={column.dataIndex}
+                    width={column.width}
+                    render={() => <Shimmer />}
+                  />
+                )
+              })}
+            {!loading &&
+              columns?.map(({ key, ...column }: any) => {
+                return <Column key={key} {...column} />
+              })}
+          </BaseTable>
+          {dataSource && dataSource.length === 0 && !loading && (
+            <div className="syky-table-empty-wrapper">
+              {empty ? empty : <Empty />}
+            </div>
+          )}
+        </>
       ) : (
         <>
           {dataSource && dataSource.length > 0 ? (

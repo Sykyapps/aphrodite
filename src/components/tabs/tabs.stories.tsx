@@ -47,7 +47,7 @@ const items: TabsProps["items"] = [
 ]
 
 export const Default: Story = {
-  render: () => <Tabs items={items} />,
+  render: () => <Tabs items={items} className="w-96" />,
 }
 
 export default meta
