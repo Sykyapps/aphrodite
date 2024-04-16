@@ -77,6 +77,40 @@
   &-row-clickable:hover {
     cursor: pointer;
   }
+
+  &-empty {
+    .ant-table-thead {
+      & > tr > th {
+        border-top: unset;
+        border-bottom: unset;
+
+        &:first-child {
+          border-left: unset;
+        }
+
+        &:last-child {
+          border-right: unset;
+        }
+      }
+    }
+
+    .ant-table-tbody {
+      display: none;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      height: 385px;
+
+      .syky-empty {
+        flex-grow: 1;
+        justify-content: center;
+      }
+    }
+  }
+
 }
 
 .syky-table-mobile {
@@ -150,7 +184,14 @@
   }
 
   &-empty {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 385px;
+
+    .syky-empty {
+      flex-grow: 1;
+      justify-content: center;
+    }
 
     @media (min-width: 1024px) {
       display: none;
