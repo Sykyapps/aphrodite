@@ -9,7 +9,7 @@ const SvgArrowLeftIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#1C1D1F"
+      fill="currentColor"
       d="M9.636 12 16 18.223 14.182 20 6 12l8.182-8L16 5.777z"
     />
   </svg>
