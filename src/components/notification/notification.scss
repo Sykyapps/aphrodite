@@ -1,0 +1,21 @@
+.syky-notification {
+  padding: 13px 20px !important;
+  width: 302px !important;
+
+  .ant-notification-notice-message {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    margin-inline-start: 0 !important;
+  }
+
+  &-success {
+    background-color: #13af78;
+  }
+
+  &-error {
+    background-color: #ff3165;
+  }
+}
