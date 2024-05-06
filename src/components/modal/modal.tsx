@@ -8,6 +8,9 @@ import "./modal.scss"
 type ModalProps = {
   title: string
   disabled?: boolean
+  hideHeader?: boolean
+  cancelButton?: boolean
+  danger?: boolean
   onOk: () => void
   onClose: () => void
   okText?: string
@@ -21,9 +24,13 @@ const Modal = ({
   className = "",
   title,
   disabled = false,
+  hideHeader = false,
+  cancelButton = false,
+  danger = false,
   onOk,
   onClose,
   okText = "Terapkan",
+  cancelText = "Kembali",
   open,
   ...props
 }: ModalProps) => {
@@ -33,27 +40,43 @@ const Modal = ({
       open={open}
       closeIcon={null}
       title={
-        <div className="syky-modal-header">
-          <button onClick={onClose} className="syky-modal-close-button">
-            <CloseIcon height={16} width={16} />
-          </button>
-        </div>
+        !hideHeader ? (
+          <div className="syky-modal-header">
+            <button onClick={onClose} className="syky-modal-close-button">
+              <CloseIcon height={16} width={16} />
+            </button>
+          </div>
+        ) : null
       }
       footer={
-        <Button
-          onClick={onOk}
-          disabled={disabled}
-          style={{ width: "100%" }}
-          size="large"
-        >
-          {okText}
-        </Button>
+        <div className="flex gap-3">
+          {cancelButton && (
+            <Button
+              buttonVariant="secondary"
+              size="large"
+              danger={danger}
+              onClick={onClose}
+              style={{ width: "100%" }}
+            >
+              {cancelText}
+            </Button>
+          )}
+          <Button
+            size="large"
+            danger={danger}
+            disabled={disabled}
+            onClick={onOk}
+            style={{ width: "100%" }}
+          >
+            {okText}
+          </Button>
+        </div>
       }
       onOk={onOk}
       onCancel={onClose}
       {...props}
     >
-      <p className="syky-modal-title">{title}</p>
+      {!hideHeader && <p className="syky-modal-title">{title}</p>}
       {props.children}
     </BaseModal>
   )

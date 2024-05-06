@@ -5,6 +5,7 @@ import { Meta, StoryObj } from "@storybook/react"
 import contextProvider from "../../providers/contextProvider"
 import Button from "../button"
 import { Input } from "../input"
+import { showNotification } from "../notification/notification"
 
 import { default as Dialog } from "./dialog"
 
@@ -28,10 +29,14 @@ export const Default: Story = {
     const [isOpen, setIsOpen] = useState(false)
     const [value, setValue] = useState("")
 
-    const { message } = contextProvider.useApp()
+    const { notification } = contextProvider.useApp()
 
     const handleOk = () => {
-      message.info(value)
+      showNotification({
+        notification,
+        type: "success",
+        message: `Searching for ${value}`,
+      })
 
       setIsOpen(false)
       setValue("")
@@ -46,9 +51,13 @@ export const Default: Story = {
           onClose={() => setIsOpen(false)}
           open={isOpen}
           disabled={value.length === 0}
+          hideHeader={args.hideHeader}
+          cancelButton={args.cancelButton}
+          danger={args.danger}
           width={args.width}
           breakpoint={args.breakpoint}
           okText={args.okText}
+          cancelText={args.cancelText}
         >
           <div style={{ padding: "20px 0" }}>
             <p>Search</p>
@@ -65,6 +74,9 @@ export const Default: Story = {
     title: "Sort & Filter",
     breakpoint: "lg",
     okText: "Terapkan",
+    hideHeader: false,
+    cancelButton: true,
+    danger: false,
   },
 }
 
