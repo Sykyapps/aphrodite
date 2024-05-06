@@ -12,11 +12,22 @@
   &-primary {
     background-color: #6756c1;
     color: #ffffff;
+
+    &.syky-button-dangerous {
+      background-color: #ff3165;
+      box-shadow: unset;
+    }
   }
 
   &-secondary {
     background-color: #eceaf7;
     color: #534794;
+
+    &.syky-button-dangerous {
+      background-color: #ffe5ec;
+      color: #ff3165;
+      box-shadow: unset;
+    }
   }
 
   &-icon {
@@ -79,4 +90,9 @@
   &-loading-text {
     opacity: 0;
   }
+}
+
+.ant-button-dangerous {
+  background-color: #f5222d;
+  color: #ffffff;
 }
