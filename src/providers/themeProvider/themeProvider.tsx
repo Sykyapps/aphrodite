@@ -71,6 +71,9 @@ const ThemeProvider = ({ children }: Props) => {
           Pagination: {
             itemActiveBg: "#ECEAF7",
           },
+          Select: {
+            optionFontSize: 16,
+          },
           Table: {
             headerBg: "#F5F6FA",
             borderColor: "#E0E3EF",
