@@ -10,6 +10,7 @@ const { Column } = BaseTable
 
 type TableProps = {
   clickable?: boolean
+  hoverable?: boolean
   layout?: "fixed" | "auto"
   breakpoint?: "sm" | "md" | "lg" | "xl" | "xxl"
   onRowClick?: (value: any) => void
@@ -26,6 +27,7 @@ type TableProps = {
 
 const Table = ({
   clickable = false,
+  hoverable = false,
   layout = "auto",
   breakpoint = "lg",
   loading = false,
@@ -71,7 +73,7 @@ const Table = ({
               !loading && dataSource && dataSource.length === 0
                 ? "syky-table-empty"
                 : ""
-            }`}
+            } ${!hoverable ? "syky-table-disable-hover" : ""}`}
             dataSource={!loading ? dataSource : generateLoadingData()}
             rowClassName={`${rowClassName} ${
               clickable && !loading ? "syky-table-row-clickable" : ""
@@ -127,7 +129,7 @@ const Table = ({
                           key={index}
                           className={`syky-table-mobile-wrapper ${
                             clickable ? "syky-table-mobile-clickable" : ""
-                          }`}
+                          } ${!hoverable ? "syky-table-disable-hover" : ""}`}
                           onClick={() =>
                             onRowClick ? clickable && onRowClick(data) : null
                           }
@@ -144,7 +146,10 @@ const Table = ({
                                   </td>
                                   <td className="syky-table-mobile-column-value">
                                     {column.render
-                                      ? column.render(data[column.dataIndex])
+                                      ? column.render(
+                                          data[column.dataIndex],
+                                          data,
+                                        )
                                       : data[column.dataIndex]}
                                   </td>
                                 </tr>

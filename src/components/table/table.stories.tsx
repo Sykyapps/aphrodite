@@ -136,6 +136,7 @@ export const Default: Story = {
         loading={args.loading}
         defaultMobileLoadingLength={args.defaultMobileLoadingLength}
         clickable={args.clickable}
+        hoverable={args.hoverable}
         layout={args.layout}
         breakpoint={args.breakpoint}
         empty={args.empty}
@@ -150,6 +151,7 @@ export const Default: Story = {
   args: {
     loading: false,
     clickable: true,
+    hoverable: false,
     layout: "fixed",
     defaultMobileLoadingLength: 5,
     breakpoint: "lg",
