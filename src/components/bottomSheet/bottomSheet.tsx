@@ -10,6 +10,7 @@ import "./bottomSheet.scss"
 
 type BottomSheetProps = {
   title: string
+  loading?: boolean
   disabled?: boolean
   hideHeader?: boolean
   cancelButton?: boolean
@@ -23,6 +24,7 @@ type BottomSheetProps = {
 const BottomSheet = ({
   open,
   title,
+  loading = false,
   disabled = false,
   hideHeader = false,
   cancelButton = false,
@@ -53,6 +55,7 @@ const BottomSheet = ({
           )}
           <Button
             size="large"
+            loading={loading}
             disabled={disabled}
             onClick={onOk}
             danger={danger}

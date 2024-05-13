@@ -7,6 +7,7 @@ import "./modal.scss"
 
 type ModalProps = {
   title: string
+  loading?: boolean
   disabled?: boolean
   hideHeader?: boolean
   cancelButton?: boolean
@@ -23,6 +24,7 @@ type ModalProps = {
 const Modal = ({
   className = "",
   title,
+  loading = false,
   disabled = false,
   hideHeader = false,
   cancelButton = false,
@@ -55,6 +57,7 @@ const Modal = ({
               buttonVariant="secondary"
               size="large"
               danger={danger}
+              disabled={loading}
               onClick={onClose}
               style={{ width: "100%" }}
             >
@@ -64,6 +67,7 @@ const Modal = ({
           <Button
             size="large"
             danger={danger}
+            loading={loading}
             disabled={disabled}
             onClick={onOk}
             style={{ width: "100%" }}

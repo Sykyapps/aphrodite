@@ -1,0 +1,25 @@
+.syky-select {
+  .ant-select-selector {
+    border: unset !important;
+    border-bottom: 1px solid #e0e3ef !important;
+    border-radius: unset !important;
+    padding-left: 0 !important;
+
+    .ant-select-selection-placeholder{
+      font-size: 16px;
+      color: #989cac;
+    }
+
+    .ant-select-selection-item {
+      font-size: 16px;
+    }
+  }
+
+  .ant-select-arrow {
+    inset-inline-end: 0 !important;
+  }
+
+  &:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+    box-shadow: unset !important;
+  }
+}

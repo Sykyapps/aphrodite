@@ -48,7 +48,7 @@
     background-color: #ffffff;
   }
 
-  &:not(.syky-table-loading) .ant-table-tbody {
+  &:not(.syky-table-loading):not(.syky-table-disable-hover) .ant-table-tbody {
     .ant-table-row {
       .ant-table-cell-row-hover {
         background: #eef0fc;
@@ -61,6 +61,20 @@
           background: #eef0fc;
           border-bottom: 1px solid #e0e3ef;
           color: #4d68dc;
+        }
+      }
+    }
+  }
+
+  &:not(.syky-table-loading).syky-table-disable-hover .ant-table-tbody {
+    .ant-table-row {
+      .ant-table-cell-row-hover {
+        background: #ffffff;
+      }
+
+      &:last-child {
+        .ant-table-cell-row-hover {
+          background: #ffffff;
         }
       }
     }
@@ -130,9 +144,13 @@
     width: fit-content;
 
     &:hover {
-      &:not(.syky-table-mobile-loading) .syky-table-mobile-column-value {
+      &:not(.syky-table-mobile-loading):not(.syky-table-disable-hover) .syky-table-mobile-column-value {
         background: #eef0fc;
         color: #4d68dc;
+      }
+
+      &:not(.syky-table-mobile-loading).syky-table-disable-hover .syky-table-mobile-column-value {
+        background: #ffffff;
       }
     }
 

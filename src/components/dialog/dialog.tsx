@@ -9,7 +9,8 @@ interface DialogProps {
   onOk: () => void
   onClose: () => void
   open: boolean
-  disabled: boolean
+  loading?: boolean
+  disabled?: boolean
   hideHeader?: boolean
   cancelButton?: boolean
   danger?: boolean
@@ -21,6 +22,8 @@ interface DialogProps {
 }
 
 const Dialog = ({
+  loading = false,
+  disabled = false,
   breakpoint = "lg",
   okText = "Terapkan",
   cancelText = "Kembali",
@@ -34,9 +37,10 @@ const Dialog = ({
         <Modal
           title={props.title}
           onOk={props.onOk}
-          onClose={props.onClose}
+          onClose={!loading ? props.onClose : () => {}}
           open={props.open}
-          disabled={props.disabled}
+          loading={loading}
+          disabled={disabled}
           hideHeader={props.hideHeader}
           cancelButton={props.cancelButton}
           danger={props.danger}
@@ -51,9 +55,10 @@ const Dialog = ({
         <BottomSheet
           title={props.title}
           onOk={props.onOk}
-          onClose={props.onClose}
+          onClose={!loading ? props.onClose : () => {}}
           open={props.open}
-          disabled={props.disabled}
+          loading={loading}
+          disabled={disabled}
           hideHeader={props.hideHeader}
           cancelButton={props.cancelButton}
           danger={props.danger}
