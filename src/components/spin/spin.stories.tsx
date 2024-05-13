@@ -24,6 +24,11 @@ const meta = {
       options: ["small", "default", "large"],
     },
   },
+  render: (args) => (
+    <Spin {...args}>
+      <div className="h-20 w-40 bg-neutral-400" />
+    </Spin>
+  ),
 } satisfies Meta<typeof Spin>
 
 type Story = StoryObj<typeof Spin>

@@ -10,7 +10,11 @@ const Spin = ({ fullscreen = false, ...props }: SpinProps) => {
   return (
     <BaseSpin
       className={`${fullscreen ? "syky-spin-fullscreen" : ""}`}
-      indicator={<Spinner />}
+      indicator={
+        <div className={`${!fullscreen ? "syky-spin-dot-wrapper" : ""}`}>
+          <Spinner />
+        </div>
+      }
       fullscreen={fullscreen}
       {...props}
     />

@@ -1,3 +1,9 @@
-.syky-spin-fullscreen {
-  background-color: #ffffff;
+.syky-spin {
+  &-fullscreen {
+    background-color: #ffffff;
+  }
+
+  &-dot-wrapper {
+    top: 55% !important;
+  }
 }
