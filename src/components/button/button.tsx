@@ -6,10 +6,12 @@ import "./button.scss"
 
 type ButtonProps = {
   buttonVariant?: "primary" | "secondary" | "icon"
+  disableHover?: boolean
 } & Omit<BaseButtonProps, "type">
 
 const Button = ({
   buttonVariant = "primary",
+  disableHover = false,
   size = "middle",
   className = "",
   loading,
@@ -21,7 +23,7 @@ const Button = ({
     <BaseButton
       className={`syky-button syky-button-${buttonVariant} syky-button-${size} ${
         props.danger ? "syky-button-dangerous" : ""
-      } ${className}`}
+      } ${disableHover ? "syky-button-disable-hover" : ""} ${className}`}
       type={buttonVariant !== "icon" ? "primary" : "text"}
       icon={undefined}
       {...props}
