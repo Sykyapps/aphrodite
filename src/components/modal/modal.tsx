@@ -55,6 +55,7 @@ const Modal = ({
           {cancelButton && (
             <Button
               buttonVariant="secondary"
+              disableHover
               size="large"
               danger={danger}
               disabled={loading}
