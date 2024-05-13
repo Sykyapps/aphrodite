@@ -7,7 +7,6 @@ import type { InputProps } from "./input"
 
 const meta = {
   title: "Forms/Input",
-  component: Input,
   parameters: {
     layout: "centered",
     docs: {
@@ -33,6 +32,13 @@ const meta = {
       action: "onChange",
     },
   },
+  render: (args) => {
+    return (
+      <div className="w-96">
+        <Input {...args} />
+      </div>
+    )
+  },
 } satisfies Meta<InputProps>
 
 type Story = StoryObj<typeof Input>
@@ -40,6 +46,7 @@ type Story = StoryObj<typeof Input>
 export const Standard: Story = {
   args: {
     inputVariant: "standard",
+    loading: false,
     placeholder: "Cari pengguna disini",
   },
 }

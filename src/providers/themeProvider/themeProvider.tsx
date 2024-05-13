@@ -37,7 +37,7 @@ const ThemeProvider = ({ children }: Props) => {
         components: {
           Breadcrumb: {
             itemColor: "#1C1D1F",
-            lastItemColor: "#6756C1",
+            lastItemColor: "#4D68DC",
             linkColor: "#1C1D1F",
             linkHoverColor: "#1C1D1F",
             separatorColor: "#1C1D1F",

@@ -1,21 +1,31 @@
 import { Select as BaseSelect, SelectProps as BaseSelectProps } from "antd"
 
 import { ArrowDownIcon } from "../icons"
+import Shimmer from "../shimmer"
 
 import "./select.scss"
 
-type SelectProps = Omit<BaseSelectProps, "suffixIcon" | "dropdownStyle">
+type SelectProps = { loading?: boolean } & Omit<
+  BaseSelectProps,
+  "suffixIcon" | "dropdownStyle"
+>
 
-const Select = ({ className = "", ...props }: SelectProps) => {
+const Select = ({ loading = false, className = "", ...props }: SelectProps) => {
   return (
-    <BaseSelect
-      className={`syky-select ${className}`}
-      suffixIcon={
-        <ArrowDownIcon className="text-lowEmphasis-iconPrimary text-xl" />
-      }
-      dropdownStyle={{ border: "1px solid #E0E3EF" }}
-      {...props}
-    />
+    <>
+      {!loading ? (
+        <BaseSelect
+          className={`syky-select ${className}`}
+          suffixIcon={
+            <ArrowDownIcon className="text-lowEmphasis-iconPrimary text-xl" />
+          }
+          dropdownStyle={{ border: "1px solid #E0E3EF" }}
+          {...props}
+        />
+      ) : (
+        <Shimmer className="mt-2" />
+      )}
+    </>
   )
 }
 

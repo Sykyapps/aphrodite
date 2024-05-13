@@ -45,6 +45,7 @@ const BottomSheet = ({
           {cancelButton && (
             <Button
               buttonVariant="secondary"
+              disableHover
               size="large"
               onClick={onClose}
               danger={danger}

@@ -1,21 +1,34 @@
 import { Input as BaseInput, InputProps as BaseInputProps } from "antd"
 
+import Shimmer from "../shimmer"
+
 import "./input.scss"
 
 type InputProps = {
   inputVariant?: "standard" | "outlined"
+  loading?: boolean
 } & BaseInputProps
 
-const Input = ({ inputVariant = "standard", ...props }: InputProps) => {
+const Input = ({
+  inputVariant = "standard",
+  loading = false,
+  ...props
+}: InputProps) => {
   return (
-    <BaseInput
-      className={
-        inputVariant === "standard"
-          ? "syky-standard-input"
-          : "syky-outlined-input"
-      }
-      {...props}
-    />
+    <>
+      {!loading ? (
+        <BaseInput
+          className={
+            inputVariant === "standard"
+              ? "syky-standard-input"
+              : "syky-outlined-input"
+          }
+          {...props}
+        />
+      ) : (
+        <Shimmer className="mt-2" />
+      )}
+    </>
   )
 }
 

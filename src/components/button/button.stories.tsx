@@ -43,6 +43,8 @@ export const Primary: Story = {
   args: {
     disabled: false,
     loading: false,
+    danger: false,
+    disableHover: false,
     buttonVariant: "primary",
     size: "middle",
     children: "Search",
@@ -53,6 +55,8 @@ export const Secondary: Story = {
   args: {
     disabled: false,
     loading: false,
+    danger: false,
+    disableHover: false,
     buttonVariant: "secondary",
     size: "middle",
     children: "Search",
@@ -63,6 +67,8 @@ export const Icon: Story = {
   args: {
     disabled: false,
     loading: false,
+    danger: false,
+    disableHover: false,
     buttonVariant: "icon",
     size: "middle",
     icon: "search",
