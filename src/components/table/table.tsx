@@ -27,7 +27,7 @@ type TableProps = {
 
 const Table = ({
   clickable = false,
-  hoverable = false,
+  hoverable = true,
   layout = "auto",
   breakpoint = "lg",
   loading = false,
