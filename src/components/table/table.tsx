@@ -55,7 +55,7 @@ const Table = ({
         key: i,
       }
       columns?.forEach((value: any) => {
-        obj[value.dataIndex] = value.dataIndex
+        obj[value.dataIndex] = value.dataIndex + i
       })
       loadingData.push(obj)
     }
