@@ -98,7 +98,7 @@ const columns: TableProps["columns"] = [
 
 const data = [
   {
-    key: "1",
+    id: "1",
     name: "John Brown",
     fundName: "Sucorinvest Sharia Balanced Fund Plus",
     grossTransactionAmount: 100000000000,
@@ -108,7 +108,7 @@ const data = [
     type: "Redemption",
   },
   {
-    key: "2",
+    id: "2",
     name: "John Brown",
     fundName: "Sucorinvest Sharia Balanced Fund Plus",
     grossTransactionAmount: 100000000000,
@@ -118,7 +118,7 @@ const data = [
     type: "Redemption",
   },
   {
-    key: "3",
+    id: "3",
     name: "John Brown",
     fundName: "Sucorinvest Sharia Balanced Fund Plus",
     grossTransactionAmount: 100000000000,
