@@ -1,3 +1,4 @@
+import Shimmer from "../shimmer"
 import { Paragraph } from "../typography"
 
 import "./detail.scss"
@@ -10,11 +11,12 @@ type DetailItem = {
 }
 
 type DetailProps = {
+  loading?: boolean
   items: DetailItem[]
-  dataSource: Record<any, string | number>
+  dataSource: any
 }
 
-const Detail = ({ items, dataSource }: DetailProps) => {
+const Detail = ({ loading = false, items, dataSource }: DetailProps) => {
   return (
     <div className="syky-contained-list">
       {items.map((item, index) => {
@@ -26,7 +28,9 @@ const Detail = ({ items, dataSource }: DetailProps) => {
               </Paragraph>
             </div>
             <div className="syky-contained-list-value">
-              {item.render ? (
+              {loading ? (
+                <Shimmer />
+              ) : item.render ? (
                 item.render(dataSource[item.dataIndex])
               ) : (
                 <Paragraph level={2}>{dataSource[item.dataIndex]}</Paragraph>
