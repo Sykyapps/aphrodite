@@ -9,6 +9,7 @@ import "./table.scss"
 const { Column } = BaseTable
 
 type TableProps = {
+  rowKey?: string | number
   clickable?: boolean
   hoverable?: boolean
   layout?: "fixed" | "auto"
@@ -22,12 +23,19 @@ type TableProps = {
   empty?: React.ReactNode
 } & Exclude<
   BaseTableProps,
-  "loading" | "columns" | "dataSource" | "pagination" | "onRow" | "locale"
+  | "loading"
+  | "columns"
+  | "dataSource"
+  | "pagination"
+  | "onRow"
+  | "locale"
+  | "rowKey"
 >
 
 const Table = ({
+  rowKey = "id",
   clickable = false,
-  hoverable = false,
+  hoverable = true,
   layout = "auto",
   breakpoint = "lg",
   loading = false,
@@ -55,7 +63,7 @@ const Table = ({
         key: i,
       }
       columns?.forEach((value: any) => {
-        obj[value.dataIndex] = value.dataIndex
+        obj[value.dataIndex] = value.dataIndex + i
       })
       loadingData.push(obj)
     }
@@ -91,6 +99,7 @@ const Table = ({
             pagination={false}
             showSorterTooltip={false}
             locale={undefined}
+            rowKey={loading ? "key" : rowKey}
             {...props}
           >
             {loading &&

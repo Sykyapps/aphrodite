@@ -60,11 +60,14 @@ const data = {
 }
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div className="w-full lg:w-[956px]">
-      <Detail items={items} dataSource={data} />
+      <Detail loading={args.loading} items={items} dataSource={data} />
     </div>
   ),
+  args: {
+    loading: false,
+  },
 }
 
 export default meta
