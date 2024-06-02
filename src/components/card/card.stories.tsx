@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
+import CardTable from "../cardTable/cardTable"
 import { EyeOpenIcon } from "../icons"
 
 import { default as Card } from "./card"
@@ -40,64 +41,56 @@ export const WithoutChildPadding: Story = {
   render: (args) => {
     const data = [
       {
-        key: "1",
+        id: "1",
         name: "John Brown",
-        fundName: "Sucorinvest Anak Pintar",
         transactionType: "Redemption",
       },
       {
-        key: "2",
+        id: "2",
         name: "John Doe",
-        fundName: "Sucorinvest Sharia Money Market Fund",
         transactionType: "Subscription",
       },
       {
-        key: "3",
+        id: "3",
         name: "John Wick",
-        fundName: "KISI Fixed Income Plus Premium Fund",
         transactionType: "Other",
+      },
+    ]
+
+    const columns = [
+      {
+        title: "Name",
+        dataIndex: "name",
+        key: "name",
+      },
+      {
+        title: "Transaction Type",
+        dataIndex: "transactionType",
+        key: "transactionType",
       },
     ]
 
     return (
       <Card
+        loading={args.loading}
         title={args.title}
         subtitle={args.subtitle}
         icon={args.icon}
         removeContentPadding={args.removeContentPadding}
         titleContentGap={args.titleContentGap}
       >
-        <div
-          style={{ display: "flex", background: "#F5F6FA", fontWeight: 700 }}
-        >
-          <div style={{ padding: "20px" }}>
-            <p>Nama Nasabah</p>
-          </div>
-          <div style={{ padding: "20px" }}>
-            <p>Jenis Transaksi</p>
-          </div>
-        </div>
-        {data.map((data) => {
-          return (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              }}
-            >
-              <div style={{ padding: "20px" }}>
-                <p>{data.name}</p>
-              </div>
-              <div style={{ padding: "20px" }}>
-                <p>{data.transactionType}</p>
-              </div>
-            </div>
-          )
-        })}
+        <CardTable
+          hoverable
+          onRowClick={(data) => console.log(data)}
+          loading={args.loading}
+          columns={columns}
+          dataSource={data}
+        />
       </Card>
     )
   },
   args: {
+    loading: false,
     title: "Daftar Pembelian",
     subtitle: "Pembelian terbaru pada saat ini",
     removeContentPadding: true,

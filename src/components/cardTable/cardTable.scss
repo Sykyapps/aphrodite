@@ -1,0 +1,50 @@
+.syky-card-table {
+  &-header {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background-color: #f5f6fa;
+    font-family: "UniNeue", sans-serif;
+
+    &-item {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+
+      &-wrapper {
+        padding: 20px;
+      }
+    }
+  }
+
+  &-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-bottom: 1px solid #e0e3ef;
+    font-family: "UniNeue", sans-serif;
+
+    &-item {
+      font-size: 14px;
+      line-height: 20px;
+      word-break: break-word;
+
+      &-wrapper {
+        padding: 20px;
+      }
+    }
+
+    &.syky-card-table-hoverable:hover {
+      cursor: pointer;
+      background: #eef0fc;
+      border-bottom: 1px solid #4d68dc;
+      color: #4d68dc;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+
+      &.syky-card-table-hoverable:hover {
+        border-bottom: 0;
+      }
+    }
+  }
+}
