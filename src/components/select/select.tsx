@@ -5,17 +5,26 @@ import Shimmer from "../shimmer"
 
 import "./select.scss"
 
-type SelectProps = { loading?: boolean } & Omit<
-  BaseSelectProps,
-  "suffixIcon" | "dropdownStyle"
->
+type SelectProps = {
+  loading?: boolean
+  selectVariant?: "standard" | "outlined"
+} & Omit<BaseSelectProps, "suffixIcon" | "dropdownStyle" | "variant">
 
-const Select = ({ loading = false, className = "", ...props }: SelectProps) => {
+const Select = ({
+  loading = false,
+  className = "",
+  selectVariant = "standard",
+  ...props
+}: SelectProps) => {
   return (
     <>
       {!loading ? (
         <BaseSelect
-          className={`syky-select ${className}`}
+          className={`${
+            selectVariant === "standard"
+              ? "syky-standard-select"
+              : "syky-outlined-select"
+          } syky-select ${className}`}
           suffixIcon={
             <ArrowDownIcon className="text-lowEmphasis-iconPrimary text-xl" />
           }
