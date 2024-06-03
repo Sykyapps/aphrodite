@@ -1,24 +1,33 @@
+import Shimmer from "../shimmer"
+
 import "./card.scss"
 
 type CardProps = {
+  loading?: boolean
   title?: string
   icon?: React.ReactNode
-  subtitle?: string
+  subtitle?: React.ReactNode
   removeContentPadding?: boolean
   titleContentGap?: number
   children: React.ReactNode
+  additionalClass?: string
 }
 
 const Card = ({
+  loading = false,
   title = "",
   icon = "",
   subtitle = "",
   removeContentPadding = false,
   titleContentGap = 10,
   children,
+  additionalClass = "",
 }: CardProps) => {
   return (
-    <div className="syky-card" style={{ gap: titleContentGap }}>
+    <div
+      className={`syky-card ${additionalClass}`}
+      style={{ gap: titleContentGap }}
+    >
       {(title || icon || subtitle) && (
         <div className="syky-card-header">
           {(icon || title) && (
@@ -27,7 +36,15 @@ const Card = ({
               {title && <p className="syky-card-title">{title}</p>}
             </div>
           )}
-          {subtitle && <p className="syky-card-subtitle">{subtitle}</p>}
+          {subtitle && (
+            <>
+              {loading ? (
+                <Shimmer height={16} />
+              ) : (
+                <div className="syky-card-subtitle">{subtitle}</div>
+              )}
+            </>
+          )}
         </div>
       )}
       <div
@@ -39,4 +56,5 @@ const Card = ({
   )
 }
 
+export type { CardProps }
 export default Card

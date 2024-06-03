@@ -1,12 +1,9 @@
-import { SelectProps } from "antd"
-
 import { Meta, StoryObj } from "@storybook/react"
 
-import Select from "./index"
+import { default as Select, SelectProps } from "./select"
 
 const meta = {
   title: "Forms/Select",
-  component: Select,
   parameters: {
     layout: "centered",
     docs: {
@@ -24,12 +21,14 @@ const meta = {
   render: (args) => {
     return (
       <Select
+        className="w-64"
         placeholder="Pilih Peran"
         options={[
           { value: "ADMIN", label: "Super User" },
           { value: "REMISIER", label: "Remisier" },
         ]}
         onChange={args.onChange}
+        {...args}
       />
     )
   },
@@ -38,7 +37,9 @@ const meta = {
 type Story = StoryObj<SelectProps>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    selectVariant: "outlined",
+  },
 }
 
 export default meta
