@@ -21,6 +21,10 @@ type TableProps = {
   dataSource: any
   rowClassName?: string
   empty?: React.ReactNode
+  isError?: boolean
+  errorPlaceholder?: React.ReactNode
+  isSearch?: boolean
+  emptySearchPlaceholder?: React.ReactNode
 } & Exclude<
   BaseTableProps,
   | "loading"
@@ -44,7 +48,11 @@ const Table = ({
   columns,
   dataSource,
   onRowClick,
-  empty,
+  empty = <Empty />,
+  isError = false,
+  errorPlaceholder = <Empty />,
+  isSearch = false,
+  emptySearchPlaceholder = <Empty />,
   ...props
 }: TableProps) => {
   const isDesktop = useMediaQuery({ minWidth: setBreakpoint(breakpoint) })
@@ -121,7 +129,11 @@ const Table = ({
           </BaseTable>
           {dataSource && dataSource.length === 0 && !loading && (
             <div className="syky-table-empty-wrapper">
-              {empty ? empty : <Empty />}
+              {isError
+                ? errorPlaceholder
+                : isSearch
+                  ? emptySearchPlaceholder
+                  : empty}
             </div>
           )}
         </>
@@ -239,7 +251,11 @@ const Table = ({
                 </div>
               ) : (
                 <div className="syky-table-mobile-empty">
-                  {empty ? empty : <Empty />}
+                  {isError
+                    ? errorPlaceholder
+                    : isSearch
+                      ? emptySearchPlaceholder
+                      : empty}
                 </div>
               )}
             </>

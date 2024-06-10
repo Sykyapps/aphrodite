@@ -1,10 +1,11 @@
+import emptyError from "../../assets/images/illustration/empty-error.png"
 import emptyGeneral from "../../assets/images/illustration/empty-general.png"
 import emptySearch from "../../assets/images/illustration/empty-search.png"
 
 import "./empty.scss"
 
 type EmptyProps = {
-  type?: "general" | "search"
+  type?: "general" | "search" | "error"
   title?: React.ReactNode
   subtitle?: React.ReactNode
   children?: React.ReactNode
@@ -20,6 +21,8 @@ const Empty = ({
     switch (errorType) {
       case "search":
         return emptySearch
+      case "error":
+        return emptyError
       default:
         return emptyGeneral
     }
@@ -31,8 +34,8 @@ const Empty = ({
         className="syky-empty-image"
         src={setEmtpyImage(type)}
         alt="Empty"
-        width={99}
-        height={84}
+        width={120}
+        height={120}
       />
       <div className="syky-empty-content-wrapper">
         <p className="syky-empty-title">{title}</p>
