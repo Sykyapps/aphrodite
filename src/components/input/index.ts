@@ -3,6 +3,9 @@ import {
   default as InputPassword,
   InputPasswordProps,
 } from "./inputPassword.tsx"
+import { default as TextAreaInput, TextAreaProps } from "./textArea.tsx"
 
-export type { InputPasswordProps, InputProps }
-export { Input, InputPassword }
+const TextArea = TextAreaInput
+
+export type { InputPasswordProps, InputProps, TextAreaProps }
+export { Input, InputPassword, TextArea }
