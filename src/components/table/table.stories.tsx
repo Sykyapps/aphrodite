@@ -96,6 +96,58 @@ const columns: TableProps["columns"] = [
   },
 ]
 
+const actionColumns: any = [
+  {
+    title: "Name Nasabah",
+    dataIndex: "name",
+    key: "name",
+    width: 160,
+  },
+  {
+    title: "Nama Fund",
+    dataIndex: "fundName",
+    key: "fundName",
+    width: 180,
+  },
+  {
+    title: "Gross Transaction Amount",
+    dataIndex: "grossTransactionAmount",
+    key: "grossTransactionAmount",
+    width: 200,
+  },
+  {
+    title: "Number of Unit",
+    dataIndex: "unit",
+    key: "unit",
+    width: 120,
+  },
+  {
+    title: "NAV per Unit",
+    dataIndex: "nav",
+    key: "nav",
+    width: 130,
+  },
+  {
+    title: "Transaction Date",
+    dataIndex: "transactionDate",
+    key: "transactionDate",
+    width: 120,
+  },
+  {
+    title: "Action",
+    dataIndex: "id",
+    key: "id",
+    isAction: true,
+    width: 120,
+    render: () => (
+      <div className="grid grid-cols-2">
+        <a href="#">Edit</a>
+        <a href="#">Delete</a>
+      </div>
+    ),
+  },
+]
+
 const data = [
   {
     id: "1",
@@ -141,6 +193,35 @@ export const Default: Story = {
         breakpoint={args.breakpoint}
         empty={args.empty}
         columns={columns}
+        dataSource={data}
+        scroll={{ x: 100 }}
+        onRowClick={args.onRowClick}
+        onChange={args.onChange}
+      />
+    </div>
+  ),
+  args: {
+    loading: false,
+    clickable: true,
+    hoverable: false,
+    layout: "fixed",
+    defaultMobileLoadingLength: 5,
+    breakpoint: "lg",
+  },
+}
+
+export const ActionTable: Story = {
+  render: (args) => (
+    <div style={{ maxWidth: "925px" }}>
+      <Table
+        loading={args.loading}
+        defaultMobileLoadingLength={args.defaultMobileLoadingLength}
+        clickable={args.clickable}
+        hoverable={args.hoverable}
+        layout={args.layout}
+        breakpoint={args.breakpoint}
+        empty={args.empty}
+        columns={actionColumns}
         dataSource={data}
         scroll={{ x: 100 }}
         onRowClick={args.onRowClick}
