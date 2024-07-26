@@ -55,7 +55,7 @@ const Upload = ({
   }, [fileList])
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 py-2">
       <div className="w-[307px]">
         {fileList.length > 0 ? (
           <div className="flex flex-col gap-2">
