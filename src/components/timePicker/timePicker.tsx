@@ -31,7 +31,7 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
     if (!value) return
 
     setPickerValue(value)
-  }, [])
+  }, [value])
 
   return (
     <Picker
