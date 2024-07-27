@@ -25,7 +25,7 @@ const FormItemWrapper = ({
 }: FormItemWrapperProps) => {
   const { status } = Form.Item.useStatus()
   return (
-    <div>
+    <div className="flex flex-col">
       {label && (
         <label
           htmlFor={name}
