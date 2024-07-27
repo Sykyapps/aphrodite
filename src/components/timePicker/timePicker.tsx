@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from "react"
-import Picker, { PickerValue } from "react-mobile-picker"
+import Picker, { PickerValue as TimePickerValue } from "react-mobile-picker"
 
 type TimePickerProps = {
-  value?: string
-  onChange: (value: string) => void
+  value?: TimePickerValue
+  onChange: (value: TimePickerValue) => void
 }
 
 const TimePicker = ({ value, onChange }: TimePickerProps) => {
-  const [pickerValue, setPickerValue] = useState<PickerValue>({
+  const [pickerValue, setPickerValue] = useState<TimePickerValue>({
     hour: new Date().getHours().toString(),
     minute: new Date().getMinutes().toString(),
     second: new Date().getSeconds().toString(),
@@ -20,9 +20,8 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
   }
 
   const handlePickerChange = useCallback(
-    (newValue: PickerValue, key: string) => {
-      const value = `${newValue.hour}:${newValue.minute}:${newValue.second}`
-      onChange(value)
+    (newValue: TimePickerValue, key: string) => {
+      onChange(newValue)
       setPickerValue((prev) => ({ ...prev, [key]: newValue[key] }))
     },
     [],
@@ -31,10 +30,7 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
   useEffect(() => {
     if (!value) return
 
-    const hour = new Date(value).getHours().toString()
-    const minute = new Date(value).getMinutes().toString()
-    const second = new Date(value).getSeconds().toString()
-    setPickerValue({ hour, minute, second })
+    setPickerValue(value)
   }, [])
 
   return (
@@ -92,5 +88,5 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
   )
 }
 
-export type { TimePickerProps }
+export type { TimePickerProps, TimePickerValue }
 export default TimePicker
