@@ -12,7 +12,7 @@ type UploadProps = {
   title?: string
   placeholder?: string
   multiple?: boolean
-  onChange: (file: any) => void
+  onChange?: (file: any) => void
   value?: any
 } & Omit<BaseUploadProps, "onChange" | "fileList">
 

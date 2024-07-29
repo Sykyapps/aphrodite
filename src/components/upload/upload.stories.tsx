@@ -44,9 +44,8 @@ export const WithForm: Story = {
         <FormItem
           name="email"
           label="Email"
-          getValueFromEvent={(e) => console.log(e)}
-          item={({ name, onChange }: FormItemContent) => (
-            <Upload name={name} onChange={onChange} multiple />
+          item={({ name, value, onChange }: FormItemContent) => (
+            <Upload name={name} value={value} onChange={onChange} multiple />
           )}
         />
         <Button htmlType="submit">Submit</Button>
