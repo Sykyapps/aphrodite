@@ -44,9 +44,9 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
           <Picker.Item key={hour} value={hour}>
             {({ selected }) => (
               <div
-                className={
+                className={`${
                   selected ? "font-semibold text-active-text" : "text-[#4E4E4E]"
-                }
+                } text-xl`}
               >
                 {hour}
               </div>
@@ -59,9 +59,9 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
           <Picker.Item key={minute} value={minute}>
             {({ selected }) => (
               <div
-                className={
+                className={`${
                   selected ? "font-semibold text-active-text" : "text-[#4E4E4E]"
-                }
+                } text-xl`}
               >
                 {minute}
               </div>
@@ -74,9 +74,9 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
           <Picker.Item key={second} value={second}>
             {({ selected }) => (
               <div
-                className={
+                className={`${
                   selected ? "font-semibold text-active-text" : "text-[#4E4E4E]"
-                }
+                } text-xl`}
               >
                 {second}
               </div>
