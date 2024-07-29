@@ -14,7 +14,7 @@ type UploadProps = {
   multiple?: boolean
   onChange?: (file: any) => void
   value?: any
-} & Omit<BaseUploadProps, "onChange" | "fileList">
+} & Omit<BaseUploadProps, "onChange" | "fileList" | "customRequest">
 
 const Upload = ({
   title = "Upload",
@@ -25,7 +25,9 @@ const Upload = ({
 }: UploadProps) => {
   const [fileList, setFileList] = useState<UploadFile[]>([])
 
-  const handleOnRemove = (file: any) => {
+  const handleOnRemove = (file: any, e: any) => {
+    e.stopPropagation()
+
     if (!multiple) {
       setFileList([])
       onChange && onChange([])
@@ -60,44 +62,44 @@ const Upload = ({
   }, [props.value])
 
   return (
-    <div className="flex flex-wrap gap-4 py-2">
-      <div className="w-[307px]">
-        {fileList.length > 0 ? (
-          <div className="flex flex-col gap-2">
-            {fileList.map((file) => (
-              <div
-                key={file.uid}
-                className="flex justify-between items-center gap-2 p-2 bg-neutral-100 rounded w-full"
-              >
-                <span className="text-active-text hover:text-purple-300 line-clamp-1">
-                  {file.name}
-                </span>
-                <Button
-                  className="!h-auto text-lowEmphasis-iconPrimary"
-                  buttonVariant="icon"
-                  onClick={() => handleOnRemove(file)}
+    <BaseUpload
+      name={props.name}
+      onChange={handleOnUpload}
+      maxCount={props.maxCount ? props.maxCount : !multiple ? 1 : undefined}
+      fileList={[]}
+      customRequest={() => {}}
+      {...props}
+    >
+      <div className="flex flex-wrap gap-4 py-2">
+        <div className="w-[307px] cursor-pointer">
+          {fileList.length > 0 ? (
+            <div className="flex flex-col gap-2">
+              {fileList.map((file) => (
+                <div
+                  key={file.uid}
+                  className="flex justify-between items-center gap-2 p-2 bg-neutral-100 rounded w-full"
                 >
-                  <CloseIcon />
-                </Button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="flex space-between items-center gap-2 p-2 bg-neutral-100 rounded">
-            <span>{placeholder}</span>
-          </div>
-        )}
+                  <span className="text-active-text hover:text-purple-300 line-clamp-1">
+                    {file.name}
+                  </span>
+                  <Button
+                    className="!h-auto text-lowEmphasis-iconPrimary"
+                    buttonVariant="icon"
+                    onClick={(e) => handleOnRemove(file, e)}
+                  >
+                    <CloseIcon />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex space-between items-center gap-2 p-2 bg-neutral-100 rounded">
+              <span>{placeholder}</span>
+            </div>
+          )}
+        </div>
       </div>
-      <BaseUpload
-        name={props.name}
-        onChange={handleOnUpload}
-        maxCount={props.maxCount ? props.maxCount : !multiple ? 1 : undefined}
-        fileList={[]}
-        {...props}
-      >
-        <Button buttonVariant="primary">{title}</Button>
-      </BaseUpload>
-    </div>
+    </BaseUpload>
   )
 }
 
