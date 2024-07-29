@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react"
-import { Upload as BaseUpload, UploadFile } from "antd"
+import {
+  Upload as BaseUpload,
+  UploadFile,
+  UploadProps as BaseUploadProps,
+} from "antd"
 
 import Button from "../button"
 import { CloseIcon } from "../icons"
 
 type UploadProps = {
-  name?: string
   title?: string
   placeholder?: string
   multiple?: boolean
-  onChange?: (file: any) => void
+  onChange: (file: any) => void
   value?: any
-}
+} & Omit<BaseUploadProps, "onChange" | "fileList">
 
 const Upload = ({
   title = "Upload",
   placeholder = "No file choosen",
   multiple = false,
   onChange,
-  value,
   ...props
 }: UploadProps) => {
   const [fileList, setFileList] = useState<UploadFile[]>([])
@@ -51,8 +53,11 @@ const Upload = ({
   }
 
   useEffect(() => {
-    value = fileList
-  }, [fileList])
+    if (!props.value) return
+    if (fileList.length > 0) return
+
+    setFileList(props.value)
+  }, [props.value])
 
   return (
     <div className="flex flex-wrap gap-4 py-2">
@@ -90,8 +95,9 @@ const Upload = ({
       <BaseUpload
         name={props.name}
         onChange={handleOnUpload}
-        maxCount={1}
+        maxCount={props.maxCount ? props.maxCount : !multiple ? 1 : undefined}
         fileList={[]}
+        {...props}
       >
         <Button buttonVariant="primary">{title}</Button>
       </BaseUpload>
@@ -99,5 +105,5 @@ const Upload = ({
   )
 }
 
-export type { UploadProps }
+export type { UploadFile, UploadProps }
 export default Upload
