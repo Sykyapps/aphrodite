@@ -5,10 +5,7 @@ import "./datePicker.scss"
 
 type DatePickerProps = {
   onSelect: (range: Date | undefined) => void
-} & Omit<
-  DayPickerSingleProps,
-  "locale" | "mode" | "captionLayout" | "disabled" | "onSelect"
->
+} & Omit<DayPickerSingleProps, "locale" | "mode" | "captionLayout" | "onSelect">
 
 const DatePicker = ({ onSelect, ...props }: DatePickerProps) => {
   const handleOnSelect = (date: Date | undefined) => {
@@ -26,10 +23,6 @@ const DatePicker = ({ onSelect, ...props }: DatePickerProps) => {
       mode="single"
       captionLayout="dropdown"
       locale={id}
-      disabled={{
-        from: new Date(+new Date() + 86400000),
-        to: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0),
-      }}
       onSelect={handleOnSelect}
       {...props}
     />
