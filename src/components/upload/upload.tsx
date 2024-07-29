@@ -18,7 +18,7 @@ type UploadProps = {
 
 const Upload = ({
   title = "Upload",
-  placeholder = "No file choosen",
+  placeholder = "Choose Image",
   multiple = false,
   onChange,
   ...props
@@ -69,13 +69,9 @@ const Upload = ({
                 key={file.uid}
                 className="flex justify-between items-center gap-2 p-2 bg-neutral-100 rounded w-full"
               >
-                <a
-                  href={file.url}
-                  target="_blank"
-                  className="text-active-text hover:text-purple-300 line-clamp-1"
-                >
+                <span className="text-active-text hover:text-purple-300 line-clamp-1">
                   {file.name}
-                </a>
+                </span>
                 <Button
                   className="!h-auto text-lowEmphasis-iconPrimary"
                   buttonVariant="icon"
@@ -88,7 +84,7 @@ const Upload = ({
           </div>
         ) : (
           <div className="flex space-between items-center gap-2 p-2 bg-neutral-100 rounded">
-            <span className="text-[#989cac]">{placeholder}</span>
+            <span>{placeholder}</span>
           </div>
         )}
       </div>
