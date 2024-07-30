@@ -98,6 +98,7 @@ const Upload = ({
             </div>
           )}
         </div>
+        <Button buttonVariant="primary">{title}</Button>
       </div>
     </BaseUpload>
   )
