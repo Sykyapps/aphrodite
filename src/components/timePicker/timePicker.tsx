@@ -10,13 +10,13 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
   const [pickerValue, setPickerValue] = useState<TimePickerValue>({
     hour: new Date().getHours().toString(),
     minute: new Date().getMinutes().toString(),
-    second: new Date().getSeconds().toString(),
   })
 
   const selections = {
     hours: Array.from({ length: 24 }, (_, i) => i.toString()),
-    minutes: Array.from({ length: 60 }, (_, i) => i.toString()),
-    seconds: Array.from({ length: 60 }, (_, i) => i.toString()),
+    minutes: Array.from({ length: 60 }, (_, i) =>
+      i < 10 ? i.toString().padStart(2, "0") : i.toString(),
+    ),
   }
 
   const handlePickerChange = useCallback(
@@ -64,21 +64,6 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
                 } text-xl`}
               >
                 {minute}
-              </div>
-            )}
-          </Picker.Item>
-        ))}
-      </Picker.Column>
-      <Picker.Column name="second">
-        {selections.seconds.map((second) => (
-          <Picker.Item key={second} value={second}>
-            {({ selected }) => (
-              <div
-                className={`${
-                  selected ? "font-semibold text-active-text" : "text-[#4E4E4E]"
-                } text-xl`}
-              >
-                {second}
               </div>
             )}
           </Picker.Item>
