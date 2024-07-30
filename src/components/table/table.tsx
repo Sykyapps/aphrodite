@@ -8,6 +8,10 @@ import "./table.scss"
 
 const { Column } = BaseTable
 
+type ActionTableColumnType = {
+  isAction?: boolean
+} & BaseTableProps["columns"]
+
 type TableProps = {
   rowKey?: string | number
   clickable?: boolean
@@ -157,24 +161,44 @@ const Table = ({
                         >
                           <table className="syky-table-mobile">
                             <tbody>
-                              {columns?.map((column: any) => (
-                                <tr
-                                  key={Math.random() + data[column.key]}
-                                  className="syky-table-mobile-row"
-                                >
-                                  <td className="syky-table-mobile-column-title">
-                                    {column.title}
-                                  </td>
-                                  <td className="syky-table-mobile-column-value">
-                                    {column.render
-                                      ? column.render(
-                                          data[column.dataIndex],
-                                          data,
-                                        )
-                                      : data[column.dataIndex]}
-                                  </td>
-                                </tr>
-                              ))}
+                              {columns?.map((column: any) => {
+                                if (column.isAction) {
+                                  return (
+                                    <tr
+                                      key={Math.random() + data[column.key]}
+                                      className="syky-table-mobile-row"
+                                    >
+                                      <td
+                                        colSpan={2}
+                                        className="syky-table-mobile-column-value"
+                                      >
+                                        {column.render
+                                          ? column.render(data, data)
+                                          : data[column.dataIndex]}
+                                      </td>
+                                    </tr>
+                                  )
+                                }
+
+                                return (
+                                  <tr
+                                    key={Math.random() + data[column.key]}
+                                    className="syky-table-mobile-row"
+                                  >
+                                    <td className="syky-table-mobile-column-title">
+                                      {column.title}
+                                    </td>
+                                    <td className="syky-table-mobile-column-value">
+                                      {column.render
+                                        ? column.render(
+                                            data[column.dataIndex],
+                                            data,
+                                          )
+                                        : data[column.dataIndex]}
+                                    </td>
+                                  </tr>
+                                )
+                              })}
                             </tbody>
                           </table>
                         </div>
@@ -194,19 +218,37 @@ const Table = ({
                         >
                           <table className="syky-table-mobile">
                             <tbody>
-                              {columns?.map((column: any) => (
-                                <tr
-                                  key={Math.random() + data[column.key]}
-                                  className="syky-table-mobile-row"
-                                >
-                                  <td className="syky-table-mobile-column-title">
-                                    {column.title}
-                                  </td>
-                                  <td className="syky-table-mobile-column-value">
-                                    <Shimmer />
-                                  </td>
-                                </tr>
-                              ))}
+                              {columns?.map((column: any) => {
+                                if (column.isAction) {
+                                  return (
+                                    <tr
+                                      key={Math.random() + data[column.key]}
+                                      className="syky-table-mobile-row"
+                                    >
+                                      <td
+                                        colSpan={2}
+                                        className="syky-table-mobile-column-value"
+                                      >
+                                        <Shimmer />
+                                      </td>
+                                    </tr>
+                                  )
+                                }
+
+                                return (
+                                  <tr
+                                    key={Math.random() + data[column.key]}
+                                    className="syky-table-mobile-row"
+                                  >
+                                    <td className="syky-table-mobile-column-title">
+                                      {column.title}
+                                    </td>
+                                    <td className="syky-table-mobile-column-value">
+                                      <Shimmer />
+                                    </td>
+                                  </tr>
+                                )
+                              })}
                             </tbody>
                           </table>
                         </div>
@@ -230,19 +272,37 @@ const Table = ({
                       >
                         <table className="syky-table-mobile">
                           <tbody>
-                            {columns?.map((column: any, index: number) => (
-                              <tr
-                                key={data + index}
-                                className="syky-table-mobile-row"
-                              >
-                                <td className="syky-table-mobile-column-title">
-                                  {column.title}
-                                </td>
-                                <td className="syky-table-mobile-column-value">
-                                  <Shimmer />
-                                </td>
-                              </tr>
-                            ))}
+                            {columns?.map((column: any, index: number) => {
+                              if (column.isAction) {
+                                return (
+                                  <tr
+                                    key={data + index}
+                                    className="syky-table-mobile-row"
+                                  >
+                                    <td
+                                      colSpan={2}
+                                      className="syky-table-mobile-column-value"
+                                    >
+                                      <Shimmer />
+                                    </td>
+                                  </tr>
+                                )
+                              }
+
+                              return (
+                                <tr
+                                  key={data + index}
+                                  className="syky-table-mobile-row"
+                                >
+                                  <td className="syky-table-mobile-column-title">
+                                    {column.title}
+                                  </td>
+                                  <td className="syky-table-mobile-column-value">
+                                    <Shimmer />
+                                  </td>
+                                </tr>
+                              )
+                            })}
                           </tbody>
                         </table>
                       </div>
@@ -266,5 +326,5 @@ const Table = ({
   )
 }
 
-export type { TableProps }
+export type { ActionTableColumnType, TableProps }
 export default Table

@@ -1,4 +1,8 @@
-import { default as Table, TableProps } from "./table.tsx"
+import {
+  ActionTableColumnType,
+  default as Table,
+  TableProps,
+} from "./table.tsx"
 
-export type { TableProps }
+export type { ActionTableColumnType, TableProps }
 export default Table

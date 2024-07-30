@@ -1,0 +1,27 @@
+import { Title, Description, Canvas, Meta } from "@storybook/blocks"
+import * as TimePickerStories from "./timePicker.stories"
+
+<Meta of={TimePickerStories} />
+
+<Title of={TimePickerStories} />
+
+<Description of={TimePickerStories} />
+
+<Canvas of={TimePickerStories.Default} />
+
+## Usage
+
+```jsx
+const handleOnChange = (value: string) => {
+  console.log(string)
+}
+
+<TimePicker
+  value="2024-07-24T23:00:55.139Z"
+  onChange={handleOnChange}
+/>
+```
+
+## Documentation
+
+- [React Day Picker](https://react-day-picker.js.org)
