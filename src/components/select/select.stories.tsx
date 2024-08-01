@@ -14,23 +14,16 @@ const meta = {
     },
   },
   argTypes: {
+    selectVariant: {
+      control: "radio",
+      options: ["standard", "outlined"],
+    },
     onChange: {
       action: "onChange",
     },
   },
   render: (args) => {
-    return (
-      <Select
-        className="w-64"
-        placeholder="Pilih Peran"
-        options={[
-          { value: "ADMIN", label: "Super User" },
-          { value: "REMISIER", label: "Remisier" },
-        ]}
-        onChange={args.onChange}
-        {...args}
-      />
-    )
+    return <Select className="w-64" onChange={args.onChange} {...args} />
   },
 } satisfies Meta<SelectProps>
 
@@ -38,7 +31,12 @@ type Story = StoryObj<SelectProps>
 
 export const Default: Story = {
   args: {
+    placeholder: "Pilih Peran",
     selectVariant: "outlined",
+    options: [
+      { value: "ADMIN", label: "Super User" },
+      { value: "REMISIER", label: "Remisier" },
+    ],
   },
 }
 
