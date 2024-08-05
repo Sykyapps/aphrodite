@@ -34,6 +34,21 @@ export const WithForm: Story = {
       console.log(values)
     }
 
+    form.setFieldsValue({
+      email: [
+        {
+          uid: "1",
+          name: "file1",
+          url: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*X5BonbxAt1vwmI_lOxU3lQ@2x.jpeg",
+        },
+        {
+          uid: "2",
+          name: "file2",
+          url: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*X5BonbxAt1vwmI_lOxU3lQ@2x.jpeg",
+        },
+      ],
+    })
+
     return (
       <Form
         form={form}
@@ -45,7 +60,13 @@ export const WithForm: Story = {
           name="email"
           label="Email"
           item={({ name, value, onChange }: FormItemContent) => (
-            <Upload name={name} value={value} onChange={onChange} multiple />
+            <Upload
+              name={name}
+              value={value}
+              onChange={onChange}
+              multiple
+              downloadable
+            />
           )}
         />
         <Button htmlType="submit">Submit</Button>
