@@ -36,6 +36,7 @@ export const Default: Story = {
       { value: "ADMIN", label: "ADMIN" },
       { value: "REMISIER", label: "REMISIER" },
     ],
+    loading: false,
   },
 }
 

@@ -26,7 +26,7 @@ const Input = ({
           {...props}
         />
       ) : (
-        <Shimmer className="mt-2" />
+        <Shimmer className="mt-2" height={36} />
       )}
     </>
   )

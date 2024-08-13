@@ -27,7 +27,7 @@ export const Default: Story = {
 }
 
 export const WithForm: Story = {
-  render: () => {
+  render: (args) => {
     const [form] = Form.useForm()
 
     const handleOnFinish = (values: any) => {
@@ -61,6 +61,7 @@ export const WithForm: Story = {
           label="Email"
           item={({ name, value, onChange }: FormItemContent) => (
             <Upload
+              loading={args.loading}
               name={name}
               value={value}
               onChange={onChange}
@@ -72,6 +73,9 @@ export const WithForm: Story = {
         <Button htmlType="submit">Submit</Button>
       </Form>
     )
+  },
+  args: {
+    loading: false,
   },
 }
 

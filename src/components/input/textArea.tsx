@@ -1,13 +1,17 @@
 import { Input } from "antd"
 import type { TextAreaProps as BaseTextAreaProps } from "antd/es/input/TextArea"
 
+import Shimmer from "../shimmer"
+
 import "./input.scss"
 
 const { TextArea } = Input
 
 type TextAreaProps = {
+  className?: string
   inputVariant?: "standard" | "outlined"
   autoHeight?: boolean
+  loading?: boolean
 } & BaseTextAreaProps
 
 const TextAreaInput = ({
@@ -15,6 +19,7 @@ const TextAreaInput = ({
   autoHeight = false,
   rows = 1,
   id = "",
+  loading = false,
   onChange = () => {},
   ...props
 }: TextAreaProps) => {
@@ -38,18 +43,24 @@ const TextAreaInput = ({
   }
 
   return (
-    <TextArea
-      id={`${id}-${randomId}`}
-      className={
-        inputVariant === "standard"
-          ? "syky-standard-input"
-          : "syky-outlined-input"
-      }
-      onChange={handleOnChange}
-      rows={rows}
-      style={{ resize: "none" }}
-      {...props}
-    />
+    <>
+      {!loading ? (
+        <TextArea
+          id={`${id}-${randomId}`}
+          className={`${
+            inputVariant === "standard"
+              ? "syky-standard-input"
+              : "syky-outlined-input"
+          } ${props.className}`}
+          onChange={handleOnChange}
+          rows={rows}
+          style={{ resize: "none" }}
+          {...props}
+        />
+      ) : (
+        <Shimmer className={`mt-2 ${props.className}`} height={36} />
+      )}
+    </>
   )
 }
 

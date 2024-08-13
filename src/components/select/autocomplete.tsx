@@ -5,12 +5,14 @@ import {
 } from "antd"
 
 import { ArrowDownIcon } from "../icons"
+import Shimmer from "../shimmer"
 
 import "./select.scss"
 
 type AutoCompleteProps = {
   selectVariant?: "standard" | "outlined"
   options: BaseAutoCompleteProps["options"]
+  loading?: boolean
 } & Omit<
   BaseAutoCompleteProps,
   "suffixIcon" | "dropdownStyle" | "variant" | "onSearch" | "options"
@@ -19,6 +21,7 @@ type AutoCompleteProps = {
 const AutoComplete = ({
   className = "",
   selectVariant = "standard",
+  loading = false,
   options,
   ...props
 }: AutoCompleteProps) => {
@@ -47,20 +50,26 @@ const AutoComplete = ({
   }, [options])
 
   return (
-    <BaseAutoComplete
-      className={`${
-        selectVariant === "standard"
-          ? "syky-standard-select"
-          : "syky-outlined-select"
-      } syky-select ${className}`}
-      suffixIcon={
-        <ArrowDownIcon className="text-lowEmphasis-iconPrimary text-xl" />
-      }
-      dropdownStyle={{ border: "1px solid #E0E3EF" }}
-      options={optionList}
-      onSearch={handleOnSearch}
-      {...props}
-    />
+    <>
+      {!loading ? (
+        <BaseAutoComplete
+          className={`${
+            selectVariant === "standard"
+              ? "syky-standard-select"
+              : "syky-outlined-select"
+          } syky-select ${className}`}
+          suffixIcon={
+            <ArrowDownIcon className="text-lowEmphasis-iconPrimary text-xl" />
+          }
+          dropdownStyle={{ border: "1px solid #E0E3EF" }}
+          options={optionList}
+          onSearch={handleOnSearch}
+          {...props}
+        />
+      ) : (
+        <Shimmer className={`mt-2 ${className}`} height={36} />
+      )}
+    </>
   )
 }
 
