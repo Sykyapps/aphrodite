@@ -70,7 +70,16 @@ const Upload = ({
   }
 
   useEffect(() => {
-    if (!props.value) return
+    if (!props.value) {
+      setFileList([])
+      return
+    }
+
+    if (props.value.length === 0) {
+      setFileList([])
+      return
+    }
+
     if (fileList.length > 0) return
 
     setFileList(props.value)
