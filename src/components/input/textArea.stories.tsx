@@ -31,6 +31,7 @@ export const Standard: Story = {
     inputVariant: "standard",
     placeholder: "Masukkan password",
     autoHeight: true,
+    loading: false,
   },
 }
 
