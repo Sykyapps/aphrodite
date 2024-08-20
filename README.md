@@ -44,7 +44,7 @@ Before publishing this library, you'll need to login using tech@sayakaya.id npm 
 
 ```bash
 npm login
-#login to tech@sayakaya.id in via browser
+# use login via browser
 ```
 
 Update the version in `package.json` file
