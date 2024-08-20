@@ -37,3 +37,34 @@ This project uses Storybook for developing and testing UI components. To start t
 ```bash
 npm run storybook
 ```
+
+## Publishing
+
+Before publishing this library, you'll need to login using tech@sayakaya.id npm account in your local npm CLI, run:
+
+```bash
+npm login
+#login to tech@sayakaya.id in via browser
+```
+
+Update the version in `package.json` file
+
+```
+{
+  ...
+  "version": "x.y.z",
+  ...
+}
+```
+
+Then, build the library by running:
+
+```bash
+npm run build
+```
+
+Then, you can publish the library by running:
+
+```bash
+npm publish --access public
+```
