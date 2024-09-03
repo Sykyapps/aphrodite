@@ -2,35 +2,50 @@
 
 SayaKaya React UI Library
 
-## Installation
+## Development
 
-To install this library, you can use npm:
+### Install Node.js
+
+#### For Debian and it's derivatives
+
+_Download the n script to help with installing Node. You can check the source on GitHub [here](https://github.com/tj/n)_
+
+```
+curl -L https://git.io/n-install | bash
+```
+
+_Install the latest LTS release or at least version 18_
 
 ```bash
-npm install @sayakaya/aphrodite antd@5.15.1
+n lts
+# or
+n 18
 ```
 
-Or, if you prefer yarn:
+_Verify installed version_
 
+```
+npm version
+```
+
+#### For Windows
+
+_Install node via [GUI](https://nodejs.org/en/) or [chocholatey](https://chocolatey.org/)_.
+
+### Clone this repository
 ```bash
-yarn add @sayakaya/aphrodite antd@5.15.1
+git clone https://github.com/Sykyapps/aphrodite.git
 ```
 
-## Usage
+### Install required packages
 
-Here's a basic example of how to use this library:
+We prefer the [NPM package manager](https://www.npmjs.com/)
 
-```javascript
-import { Button } from '@sayakaya/aphrodite';
-
-export default () => (
-  <>
-    <Button buttonVariant="primary">PRESS ME</Button>
-  </>
-);
+```
+npm install
 ```
 
-## Developing
+### Run Storybook
 
 This project uses Storybook for developing and testing UI components. To start the Storybook server, run:
 
@@ -67,4 +82,36 @@ Then, you can publish the library by running:
 
 ```bash
 npm publish --access public
+```
+
+## How to Use
+
+After publishing the library, you can install it in your project
+
+### Installation
+
+To install this library, you can use npm:
+
+```bash
+npm install @sayakaya/aphrodite antd@5.15.1
+```
+
+Or, if you prefer yarn:
+
+```bash
+yarn add @sayakaya/aphrodite antd@5.15.1
+```
+
+### Usage
+
+Here's a basic example of how to use this library:
+
+```javascript
+import { Button } from '@sayakaya/aphrodite';
+
+export default () => (
+  <>
+    <Button buttonVariant="primary">PRESS ME</Button>
+  </>
+);
 ```
