@@ -59,7 +59,9 @@ npm run storybook
 
 ## Publishing
 
-Before publishing this library, you'll need to login using tech@sayakaya.id npm account in your local npm CLI, run:
+### Login
+
+Before publishing this library, you'll need to login using `tech@sayakaya.id` npm account in your local npm CLI, run:
 
 ```bash
 npm login
@@ -67,6 +69,8 @@ npm login
 ```
 
 Insert the credential from [this page](https://www.notion.so/sayakaya/NPM-Credentials-0463b31bc7014025b6af31e867d2c2f0?pvs=4)
+
+_Note: No need to login again if you've already logged in to `tech@sayakaya.id` before._
 
 ### Update the version
 
