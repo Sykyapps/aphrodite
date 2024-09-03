@@ -57,6 +57,36 @@ This project uses Storybook for developing and testing UI components. To start t
 npm run storybook
 ```
 
+### Use in Local Project
+
+You can use this library in your project without publishing it to npm by creating a package in your local machine
+
+_Note: You will need to publish the library to npm before you push your project to repository. After you publish, you can reinstall the package in your project from npm by following the "How To Use" guide_
+
+#### Build
+
+Build the library by running:
+
+```bash
+npm run build
+```
+
+#### Create `.tgz` Package
+
+Create a local package from the build by running:
+
+```bash
+npm pack
+```
+
+#### Installation
+
+Copy the `.tgz` file to your project directory, then install the package in your project by running:
+
+```bash
+npm install /path/to/sayakaya-aphrodite-x.y.z.tgz
+```
+
 ## Publishing
 
 ### Login
