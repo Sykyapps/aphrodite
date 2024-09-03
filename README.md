@@ -2,6 +2,10 @@
 
 SayaKaya React UI Library
 
+Currently used in:
+- [Persephone (Sales Dashboard)](https://github.com/Sykyapps/persephone)
+- [Isis (CMS)](https://github.com/Sykyapps/isis)
+
 ## Development
 
 ### Install Node.js
