@@ -62,6 +62,10 @@ npm login
 # use login via browser
 ```
 
+Insert the credential from [this page](https://www.notion.so/sayakaya/NPM-Credentials-0463b31bc7014025b6af31e867d2c2f0?pvs=4)
+
+### Update the version
+
 Update the version in `package.json` file
 
 ```
@@ -72,11 +76,15 @@ Update the version in `package.json` file
 }
 ```
 
-Then, build the library by running:
+### Build
+
+Build the library by running:
 
 ```bash
 npm run build
 ```
+
+### Publish
 
 Then, you can publish the library by running:
 
