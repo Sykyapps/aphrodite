@@ -18,12 +18,10 @@
     "node": "18"
   },
   "scripts": {
-    "build": "tsc && vite build",
-    "pack": "npm pack",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "svgToComponents": "npx @svgr/cli --out-dir src/components/icons --ignore-existing --icon --jsx-runtime automatic --typescript --filename-case camel -- src/assets/icons",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build": "tsc && vite build",
+    "svgToComponents": "npx @svgr/cli --out-dir src/components/icons --ignore-existing --icon --jsx-runtime automatic --typescript --filename-case camel -- src/assets/icons",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "react": "18.2.0",
