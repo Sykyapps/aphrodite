@@ -61,7 +61,7 @@ npm run storybook
 
 You can use this library in your project without publishing it to npm by creating a package in your local machine
 
-_Note: You will need to publish the library to npm before you push your project to repository. After you publish, you can reinstall the package in your project from npm by following the "How To Use" guide_
+_Note: You will need to publish the library to npm before you push your project to repository. After you follow the "[Publishing](#publishing)" guide, you can reinstall the package in your project from npm by following the "[How To Use](#how-to-use)" guide_
 
 #### Build
 
