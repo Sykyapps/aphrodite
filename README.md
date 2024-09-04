@@ -6,6 +6,30 @@ Currently used in:
 - [Persephone (Sales Dashboard)](https://github.com/Sykyapps/persephone)
 - [Isis (CMS)](https://github.com/Sykyapps/isis)
 
+---
+
+- [Development](#development)
+  - [Install Node.js](#install-nodejs)
+    - [For Debian and it's derivatives](#for-debian-and-its-derivatives)
+    - [For Windows](#for-windows)
+  - [Clone this repository](#clone-this-repository)
+  - [Install required packages](#install-required-packages)
+  - [Run Storybook](#run-storybook)
+  - [Use in Local Project](#use-in-local-project)
+    - [Build](#build)
+    - [Create `.tgz` Package](#create-tgz-package)
+    - [Installation](#installation)
+- [Publishing](#publishing)
+  - [Login](#login)
+  - [Update the version](#update-the-version)
+  - [Build](#build-1)
+  - [Publish](#publish)
+- [How to Use](#how-to-use)
+  - [Installation](#installation-1)
+  - [Usage](#usage)
+
+---
+
 ## Development
 
 ### Install Node.js
