@@ -10,6 +10,7 @@ type ModalProps = {
   loading?: boolean
   disabled?: boolean
   hideHeader?: boolean
+  hideFooter?: boolean
   cancelButton?: boolean
   danger?: boolean
   onOk: () => void
@@ -27,6 +28,7 @@ const Modal = ({
   loading = false,
   disabled = false,
   hideHeader = false,
+  hideFooter = false,
   cancelButton = false,
   danger = false,
   onOk,
@@ -51,31 +53,33 @@ const Modal = ({
         ) : null
       }
       footer={
-        <div className="flex gap-3">
-          {cancelButton && (
+        !hideFooter && (
+          <div className="flex gap-3">
+            {cancelButton && (
+              <Button
+                buttonVariant="secondary"
+                disableHover
+                size="large"
+                danger={danger}
+                disabled={loading}
+                onClick={onClose}
+                style={{ width: "100%" }}
+              >
+                {cancelText}
+              </Button>
+            )}
             <Button
-              buttonVariant="secondary"
-              disableHover
               size="large"
               danger={danger}
-              disabled={loading}
-              onClick={onClose}
+              loading={loading}
+              disabled={disabled}
+              onClick={onOk}
               style={{ width: "100%" }}
             >
-              {cancelText}
+              {okText}
             </Button>
-          )}
-          <Button
-            size="large"
-            danger={danger}
-            loading={loading}
-            disabled={disabled}
-            onClick={onOk}
-            style={{ width: "100%" }}
-          >
-            {okText}
-          </Button>
-        </div>
+          </div>
+        )
       }
       onOk={onOk}
       onCancel={onClose}

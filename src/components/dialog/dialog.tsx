@@ -12,6 +12,7 @@ interface DialogProps {
   loading?: boolean
   disabled?: boolean
   hideHeader?: boolean
+  hideFooter?: boolean
   cancelButton?: boolean
   danger?: boolean
   children: React.ReactNode
@@ -42,6 +43,7 @@ const Dialog = ({
           loading={loading}
           disabled={disabled}
           hideHeader={props.hideHeader}
+          hideFooter={props.hideFooter}
           cancelButton={props.cancelButton}
           danger={props.danger}
           centered
@@ -60,6 +62,7 @@ const Dialog = ({
           loading={loading}
           disabled={disabled}
           hideHeader={props.hideHeader}
+          hideFooter={props.hideFooter}
           cancelButton={props.cancelButton}
           danger={props.danger}
           okText={okText}

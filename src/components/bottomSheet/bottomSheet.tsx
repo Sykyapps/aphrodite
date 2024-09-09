@@ -13,6 +13,7 @@ type BottomSheetProps = {
   loading?: boolean
   disabled?: boolean
   hideHeader?: boolean
+  hideFooter?: boolean
   cancelButton?: boolean
   danger?: boolean
   onOk: () => void
@@ -27,6 +28,7 @@ const BottomSheet = ({
   loading = false,
   disabled = false,
   hideHeader = false,
+  hideFooter = false,
   cancelButton = false,
   danger = false,
   onOk,
@@ -41,30 +43,32 @@ const BottomSheet = ({
       className="syky-bottom-sheet"
       open={open}
       footer={
-        <div className="flex gap-3">
-          {cancelButton && (
+        !hideFooter && (
+          <div className="flex gap-3">
+            {cancelButton && (
+              <Button
+                buttonVariant="secondary"
+                disableHover
+                size="large"
+                onClick={onClose}
+                danger={danger}
+                style={{ width: "100%" }}
+              >
+                {cancelText}
+              </Button>
+            )}
             <Button
-              buttonVariant="secondary"
-              disableHover
               size="large"
-              onClick={onClose}
+              loading={loading}
+              disabled={disabled}
+              onClick={onOk}
               danger={danger}
               style={{ width: "100%" }}
             >
-              {cancelText}
+              {okText}
             </Button>
-          )}
-          <Button
-            size="large"
-            loading={loading}
-            disabled={disabled}
-            onClick={onOk}
-            danger={danger}
-            style={{ width: "100%" }}
-          >
-            {okText}
-          </Button>
-        </div>
+          </div>
+        )
       }
       onDismiss={onClose}
       {...props}
