@@ -52,6 +52,7 @@ export const Default: Story = {
           open={isOpen}
           disabled={value.length === 0}
           hideHeader={args.hideHeader}
+          hideFooter={args.hideFooter}
           cancelButton={args.cancelButton}
           danger={args.danger}
           width={args.width}
@@ -75,6 +76,7 @@ export const Default: Story = {
     breakpoint: "lg",
     okText: "Terapkan",
     hideHeader: false,
+    hideFooter: false,
     cancelButton: true,
     danger: false,
   },
