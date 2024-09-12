@@ -53,7 +53,7 @@ const Modal = ({
         ) : null
       }
       footer={
-        !hideFooter && (
+        !hideFooter ? (
           <div className="flex gap-3">
             {cancelButton && (
               <Button
@@ -79,7 +79,7 @@ const Modal = ({
               {okText}
             </Button>
           </div>
-        )
+        ) : null
       }
       onOk={onOk}
       onCancel={onClose}
