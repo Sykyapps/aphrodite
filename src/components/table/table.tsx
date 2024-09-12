@@ -21,6 +21,7 @@ type TableProps = {
   onRowClick?: (value: any) => void
   loading?: boolean
   defaultMobileLoadingLength?: number
+  pageSize?: number
   columns: BaseTableProps["columns"]
   dataSource: any
   rowClassName?: string
@@ -47,6 +48,7 @@ const Table = ({
   layout = "auto",
   breakpoint = "lg",
   loading = false,
+  pageSize = 10,
   defaultMobileLoadingLength = 3,
   rowClassName = "",
   columns,
@@ -61,14 +63,13 @@ const Table = ({
 }: TableProps) => {
   const isDesktop = useMediaQuery({ minWidth: setBreakpoint(breakpoint) })
 
-  const mobileLoadingArray = Array.from(
+  const defaultMobileLoadingArray = Array.from(
     { length: defaultMobileLoadingLength },
     (_, i) => i,
   )
 
-  const generateLoadingData = () => {
+  const generatePageLoadingData = () => {
     const loadingData = []
-    const pageSize = 10
 
     for (let i = 0; i < pageSize; i++) {
       const obj: any = {
@@ -94,7 +95,7 @@ const Table = ({
                 ? "syky-table-empty"
                 : ""
             } ${!hoverable ? "syky-table-disable-hover" : ""}`}
-            dataSource={!loading ? dataSource : generateLoadingData()}
+            dataSource={!loading ? dataSource : generatePageLoadingData()}
             rowClassName={`${rowClassName} ${
               clickable && !loading ? "syky-table-row-clickable" : ""
             }`}
@@ -207,53 +208,55 @@ const Table = ({
                   </>
                 ) : (
                   <>
-                    {generateLoadingData().map((data: any, index: number) => {
-                      return (
-                        <div
-                          key={index}
-                          className={`syky-table-mobile-wrapper ${
-                            loading ? "syky-table-mobile-loading" : ""
-                          }`}
-                          onClick={() => {}}
-                        >
-                          <table className="syky-table-mobile">
-                            <tbody>
-                              {columns?.map((column: any) => {
-                                if (column.isAction) {
+                    {generatePageLoadingData().map(
+                      (data: any, index: number) => {
+                        return (
+                          <div
+                            key={index}
+                            className={`syky-table-mobile-wrapper ${
+                              loading ? "syky-table-mobile-loading" : ""
+                            }`}
+                            onClick={() => {}}
+                          >
+                            <table className="syky-table-mobile">
+                              <tbody>
+                                {columns?.map((column: any) => {
+                                  if (column.isAction) {
+                                    return (
+                                      <tr
+                                        key={Math.random() + data[column.key]}
+                                        className="syky-table-mobile-row"
+                                      >
+                                        <td
+                                          colSpan={2}
+                                          className="syky-table-mobile-column-value"
+                                        >
+                                          <Shimmer />
+                                        </td>
+                                      </tr>
+                                    )
+                                  }
+
                                   return (
                                     <tr
                                       key={Math.random() + data[column.key]}
                                       className="syky-table-mobile-row"
                                     >
-                                      <td
-                                        colSpan={2}
-                                        className="syky-table-mobile-column-value"
-                                      >
+                                      <td className="syky-table-mobile-column-title">
+                                        {column.title}
+                                      </td>
+                                      <td className="syky-table-mobile-column-value">
                                         <Shimmer />
                                       </td>
                                     </tr>
                                   )
-                                }
-
-                                return (
-                                  <tr
-                                    key={Math.random() + data[column.key]}
-                                    className="syky-table-mobile-row"
-                                  >
-                                    <td className="syky-table-mobile-column-title">
-                                      {column.title}
-                                    </td>
-                                    <td className="syky-table-mobile-column-value">
-                                      <Shimmer />
-                                    </td>
-                                  </tr>
-                                )
-                              })}
-                            </tbody>
-                          </table>
-                        </div>
-                      )
-                    })}
+                                })}
+                              </tbody>
+                            </table>
+                          </div>
+                        )
+                      },
+                    )}
                   </>
                 )}
               </div>
@@ -262,7 +265,7 @@ const Table = ({
             <>
               {loading ? (
                 <div className="syky-table-mobile-container">
-                  {mobileLoadingArray.map((data: number) => {
+                  {defaultMobileLoadingArray.map((data: number) => {
                     return (
                       <div
                         key={data}
