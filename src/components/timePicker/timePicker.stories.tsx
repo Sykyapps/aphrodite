@@ -27,7 +27,8 @@ export const Default: Story = {
     return (
       <div className="w-96">
         <TimePicker
-          value={new Date("2024-07-24T10:20:55.139Z").toISOString()}
+          value={{ hour: "12", minute: "00" }}
+          minuteOptions={["00"]}
           onChange={args.onChange}
         />
       </div>

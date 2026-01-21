@@ -17,7 +17,8 @@ const handleOnChange = (value: string) => {
 }
 
 <TimePicker
-  value="2024-07-24T23:00:55.139Z"
+  value={{ hour: "12", minute: "00" }}
+  minuteOptions={["00"]}
   onChange={handleOnChange}
 />
 ```
