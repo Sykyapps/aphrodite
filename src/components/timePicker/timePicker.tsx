@@ -3,20 +3,33 @@ import Picker, { PickerValue as TimePickerValue } from "react-mobile-picker"
 
 type TimePickerProps = {
   value?: TimePickerValue
+  minuteOptions?: string[]
   onChange: (value: TimePickerValue) => void
 }
 
-const TimePicker = ({ value, onChange }: TimePickerProps) => {
+const TimePicker = ({ value, minuteOptions, onChange }: TimePickerProps) => {
+  const now = new Date()
+  const initialHour = now.getHours().toString()
+  let initialMinute = now.getMinutes().toString()
+  if (
+    minuteOptions &&
+    minuteOptions.length > 0 &&
+    !minuteOptions.includes(initialMinute)
+  ) {
+    initialMinute = minuteOptions[0]
+  }
   const [pickerValue, setPickerValue] = useState<TimePickerValue>({
-    hour: new Date().getHours().toString(),
-    minute: new Date().getMinutes().toString(),
+    hour: initialHour,
+    minute: initialMinute,
   })
 
   const selections = {
     hours: Array.from({ length: 24 }, (_, i) => i.toString()),
-    minutes: Array.from({ length: 60 }, (_, i) =>
-      i < 10 ? i.toString().padStart(2, "0") : i.toString(),
-    ),
+    minutes:
+      minuteOptions ??
+      Array.from({ length: 60 }, (_, i) =>
+        i < 10 ? i.toString().padStart(2, "0") : i.toString(),
+      ),
   }
 
   const handlePickerChange = useCallback(
